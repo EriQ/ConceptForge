@@ -2,7 +2,7 @@
 <!-- saved from url=(0036)http://erichigdon.com/CreativeBrief/ -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
  
-<link rel="stylesheet" href="./index_files/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <style>
     .outerBox   {
         width: 100%;
@@ -39,9 +39,9 @@
     
 </style>
 
-<script type="text/javascript" src="./index_files/jquery.min.js"></script>
-<script type="text/javascript" src="./index_files/jquery-ui.min.js"></script>
-<script type="text/JavaScript" src="./index_files/jquery.ui.touch-punch.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+<script type="text/JavaScript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 
 <script type="text/javascript">
  
@@ -58,7 +58,10 @@ function init() {
  
 function handleDropEvent( event, ui ) {
   var draggable = ui.draggable;
-    ui.draggable.css("left", "0px").css("top", "0px").appendTo($(event.target));
+    if($(event.target).children().length <= 0 || $(event.target).hasClass("categories"))
+    {
+        ui.draggable.css("left", "0px").css("top", "0px").appendTo($(event.target)); 
+    }
 }
 $(document).ready(function(){
     var categories = "";
