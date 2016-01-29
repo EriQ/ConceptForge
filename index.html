@@ -36,6 +36,13 @@
     .innerBox.makeMeDroppable .makeMeDraggable {
         margin: 6px;
     }
+    a.emptyBox {
+        font-size: 12pt;
+        position: absolute;
+        top: 0px;
+        right: 3px;
+        cursor: pointer;
+    }
     
 </style>
 
@@ -58,9 +65,12 @@ function init() {
  
 function handleDropEvent( event, ui ) {
   var draggable = ui.draggable;
-    if($(event.target).children().length <= 0 || $(event.target).hasClass("categories"))
+    if($(event.target).children().length <= 0 && !$(event.target).hasClass("categories"))
     {
-        ui.draggable.css("left", "0px").css("top", "0px").appendTo($(event.target)); 
+        ui.draggable.clone(false).css("left", "0px").css("top", "0px").appendTo($(event.target)).append("<a class='emptyBox'>X</a>");
+        $(event.target).find(".emptyBox").click(function(){
+            $(this).parent(".makeMeDraggable").remove();
+        });
     }
 }
 $(document).ready(function(){
@@ -75,12 +85,15 @@ $(document).ready(function(){
     $("button").click(function() {
         var allCategories = $(".randomizer").find(".makeMeDroppable").has(".makeMeDraggable");
        allCategories.each(function(index){
-           var list = lists[$(this).find(".makeMeDraggable").attr("data-category")];
-           categories += list[Math.floor(Math.random()*list.length)];
+           var list = lists[$(this).find(".makeMeDraggable").attr("data-category")],
+               randomNumber = Math.floor(Math.random()*list.length),
+               lastRandomNumber = 0;
+           categories += list[randomNumber];
            if(index != allCategories.length - 1)
            {
              categories += ", ";  
            }
+           
        });
         alert(categories);
         categories = "";
