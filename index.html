@@ -1,125 +1,356 @@
 <!DOCTYPE html>
-<!-- saved from url=(0036)http://erichigdon.com/CreativeBrief/ -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
- 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-<style>
-    .outerBox   {
-        width: 100%;
-        height: 145px;
-        padding: 15px;
-        border:3px solid #999;
-        margin-bottom: 25px;
-    }
-    .innerBox {
-        width: 100px;
-        height: 76px;
-        text-align: center;
-        display: inline-block;
-        vertical-align: top;
-        margin: 15px;
-        border: 2px solid #bbb;
-        background: #FFF;
-        color: #bbb;
-        font-size: 36pt;
-        padding-top: 24px;
-    }
-    .innerBox.makeMeDroppable    {
-        width: 115px;
-        height: 115px;
-        padding-top: 0px;
-        border: 2px solid #FFF;
-        background: #bbb;
-        color: #FFF;
-        background-image: url(question.svg);
-    }
-    .innerBox.makeMeDroppable .makeMeDraggable {
-        margin: 6px;
-    }
-    a.emptyBox {
-        font-size: 12pt;
-        position: absolute;
-        top: 0px;
-        right: 3px;
-        cursor: pointer;
-    }
-    
-</style>
+<html lang="en">
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
-<script type="text/JavaScript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+<head>
 
-<script type="text/javascript">
- 
-$( init );
- 
-function init() {
-  $('.makeMeDraggable').draggable({
-      revert: true
-  });
-  $('.makeMeDroppable').droppable({
-      drop: handleDropEvent
-  });
-}
- 
-function handleDropEvent( event, ui ) {
-  var draggable = ui.draggable;
-    if($(event.target).children().length <= 0 && !$(event.target).hasClass("categories"))
-    {
-        ui.draggable.clone(false).css("left", "0px").css("top", "0px").appendTo($(event.target)).append("<a class='emptyBox'>X</a>");
-        $(event.target).find(".emptyBox").click(function(){
-            $(this).parent(".makeMeDraggable").remove();
-        });
-    }
-}
-$(document).ready(function(){
-    var categories = "";
-    var lists = {
-        "dessert": ["almond cookie", "ambrosia", "angelfood cake", "apple brown Betty", "apple crisp", "apple pie", "baked Alaska", "baked apple", "baklava", "banana split", "Belgian waffle", "biscotti", "black forest cake", "blueberry muffin", "bombe", "Boston cream pie", "bread pudding", "brownie", "buttercream frosting", "butterscotch", "cake", "cannoli", "caramel apple", "carrot cake", "cheesecake", "cherry pie", "chocolate bar", "chocolate cake", "chocolate chip cookie", "chocolate mousse", "churro", "cinnamon roll", "cobbler", "coconut cake", "coconut cream pie", "coffee cake", "cookie", "crepe Suzette", "cupcake", "custard", "Danish pastry", "dessert", "devil's food cake", "doughnut", "dumplings", "eclair", "flan", "fortune cookie", "French toast", "fritter", "frosting", "frozen yogurt", "fruit cake", "fruit cocktail", "fruit salad", "fudge", "gelatin", "gelato", "gingersnaps", "gingerbread", "honey", "hot-fudge sundae", "ice cream", "ice cream cake", "icing", "jam", "jelly", "jellyroll", "Key lime pie", "ladyfingers", "lemon bars", "lemon meringue pie", "macaroon", "marshmallow", "meringue", "milkshake", "molasses", "mousse", "muffin", "neapolitan ice cream", "nougat", "nut brittle", "oatmeal cookie", "pancakes", "panna cotta", "parfait", "pastry", "peanut brittle", "peanutbutter cookie", "pecan pie", "pie", "poached pears", "popcicle", "popover", "pound cake", "praline", "pudding", "pumpkin pie", "quick bread", "red velvet cake", "rhubarb pie", "raisin bread", "rice pudding", "scone", "sherbet", "shortbread", "s'mores", "snickerdoodle", "soda", "soda bread", "sorbet", "souffle", "sponge cake", "spumoni", "strawberry shortcake", "strudel", "sugar", "sugar cookie", "sundae", "sweet potato pie", "sweet roll", "sweets", "tapioca pudding", "tart", "toasted marshmallow", "toffee", "torte", "trifle", "truffle", "turnover", "upside-down cake", "vanilla cream pie", "vanilla pudding", "waffle", "watermelon ice", "yellow cake", "zabiglone"],
-        
-        "driving": ["accelerate", "accelerator", "accident", "airbag", "alley", "arterial road", "asphalt", "auto", "automatic transmission", "automobile", "avenue", "back-up", "back seat", "back seat driver", "barrier", "bicycle", "bike", "boulevard", "brakes", "bridge", "bus", "car", "carpool", "carpool lane", "causeway", "caution", "chauffeur", "circle", "cloverleaf", "clutch", "cobblestone", "construction", "court", "crash", "cruise control", "cul-de-sac", "curve", "danger", "dead end", "defensive driving", "dent", "detour", "diamond lane", "dirt road", "do not enter sign", "double parked", "drive", "driver", "driver's ed", "driver's education", "driver's license", "driveway", "electric car", "emergency", "emission", "entrance ramp", "exhaust", "exit", "exit ramp", "expressway", "fast", "fast lane", "fender", "fill it up", "flat-bed truck", "flat tire", "freeway", "fuel", "fuel efficiency", "fuel tank", "garage", "gas", "gasoline", "gas tank", "gear", "gearshift", "global positioning system", "go", "GPS", "gravel road", "green light", "gridlock", "gutter", "hairpin curve", "headlights", "high-beam", "high-occupancy vehicle lane", "high-octane gas", "highway", "highway patrol", "hill", "HOV lane", "hybrid", "idling", "impact", "indicator", "insurance", "interchange", "intersection", "interstate highway", "jackknifing", "kilometer", "kilometers per hour", "kph", "lane", "learner's permit", "left turn", "license", "lights", "loop", "low-beam", "manual transmission", "map", "mass transit", "merge", "mile", "mile marker", "miles per gallon", "miles per hour", "motor", "motorcycle", "motorway", "mph", "no parking", "no stopping", "oil", "oncoming traffic", "one-way", "overpass", "parallel parking", "park", "parking lot", "parking meter", "parking spot", "parking ticket", "parkway", "pass", "pavement", "pedal", "pedestrian", "pedestrian crossing", "police", "pot hole", "railroad crossing", "ramp", "red light", "registration", "rest area", "rest stop", "reverse", "ride", "right turn", "road", "road closed", "road crew", "road rage", "road trip", "roadway", "rollover", "roundabout", "rush hour", "safety", "scenery", "scenic route", "school zone", "s-curve", "seatbelt", "semi", "shoulder", "sidewalk", "sign", "skid", "slow", "snow plow", "speed", "speed bump", "speed limit", "speeding", "speeding ticket", "speedometer", "state patrol", "steer", "steering wheel", "stop", "stop sign", "street", "street sign", "superhighway", "SUV", "switchbacks", "terrace", "test drive", "ticket", "tire", "toll", "toll road", "tow truck", "traffic", "traffic jam", "traffic light", "traffic sign", "transmission", "transportation", "truck", "truck route", "truck stop", "tunnel", "turn", "turn signal", "under construction", "underpass", "u-turn", "van pool", "vehicle", "warning", "wide load", "yellow light", "yield", "zebra crossing"],
-        
-        "energy": ["absorb", "AC", "accumulator", "alternating current", "anthracite coal", "appliance", "battery", "biodiesel", "biofuel", "biomass", "bituminous coal", "blackout", "boiler", "British thermal unit", "Btu", "capacity", "carbon", "carbon footprint", "carbon tax", "charcoal", "chemical energy", "clean energy", "climate change", "coal", "coke", "combustion", "conservation", "crude oil", "current", "dam", "DC", "diesel", "direct current", "drill", "dynamo", "efficiency", "efficient", "electric", "electrical", "electrical grid", "electromagnetic energy", "electron", "energy", "engine", "engineer", "entropy", "environment", "erg", "ethanol", "fossil fuel", "flexible fuel", "flywheel", "fuel", "fuel cell", "furnace", "gas", "gasoline", "gas-turbine", "generate", "generation", "generator", "geothermal", "global warming", "green", "green energy", "greenhouse effect", "greenhouse gas", "grid", "heat", "heat exchange", "high-voltage", "horsepower", "human-powered", "hybrid", "hydrocarbon", "hydroelectric", "hydrogen", "hydrothermal", "industry", "internal combustion engine", "inverter", "jet fuel", "joule", "Kelvin scale", "kilowatt", "kilowatt-hour", "kinetic energy", "light", "liquefied petroleum gas", "magnetic energy", "megawatt", "methane", "methanol", "mining", "motor", "natural gas", "nuclear", "nuclear energy", "nuclear power", "nuclear reactor", "nucleus", "off-the-grid", "oil", "oil rig", "peak oil", "peat", "petroleum", "photon", "photovoltaic", "photovoltaic panel", "pollution", "potential energy", "power", "power grid", "power lines", "power plant", "power station", "power transmission", "propane", "public utility", "radiant", "radiate", "reactor", "reciprocating engine", "reflect", "renewable", "reservoir", "shale", "solar panel", "solar power", "static electricity", "steam", "steam engine", "steam turbine", "sun", "sunlight", "sunshine", "sustainable", "temperature", "therm", "thermal energy", "thermodynamics", "tidal power", "transmission lines", "transmit", "turbine", "utilities", "volt", "waste", "watt", "wattage", "wave power", "wind", "wind farm", "windmill", "wind power", "wind turbine", "work"]
-    };
-    $("button").click(function() {
-        var allCategories = $(".randomizer").find(".makeMeDroppable").has(".makeMeDraggable");
-       allCategories.each(function(index){
-           var list = lists[$(this).find(".makeMeDraggable").attr("data-category")],
-               randomNumber = Math.floor(Math.random()*list.length),
-               lastRandomNumber = 0;
-           categories += list[randomNumber];
-           if(index != allCategories.length - 1)
-           {
-             categories += ", ";  
-           }
-           
-       });
-        alert(categories);
-        categories = "";
-    });
-});
-</script>
- 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Creative - Start Bootstrap Theme</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+
+    <!-- Custom Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="css/animate.min.css" type="text/css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/creative.css" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .outerBox   {
+            width: 100%;
+            height: 145px;
+            padding: 15px;
+            border:3px solid #999;
+            margin-bottom: 25px;
+            clear:both;
+        }
+        .innerBox {
+            width: 100px;
+            height: 76px;
+            text-align: center;
+            display: inline-block;
+            vertical-align: top;
+            margin: 15px;
+            border: 2px solid #bbb;
+            background: #FFF;
+            color: #bbb;
+            font-size: 36pt;
+            padding-top: 24px;
+        }
+        .innerBox.makeMeDroppable    {
+            width: 115px;
+            height: 115px;
+            padding-top: 0px;
+            border: 2px solid #FFF;
+            background: #bbb;
+            color: #FFF;
+            background-image: url(img/question.svg);
+        }
+        .innerBox.makeMeDroppable .makeMeDraggable {
+            margin: 6px;
+        }
+        a.emptyBox {
+            font-size: 12pt;
+            position: absolute;
+            top: 0px;
+            right: 3px;
+            cursor: pointer;
+        }
+
+    </style>
 </head>
-<body>
- 
-<div id="content">
-    <div class="categories outerBox makeMeDroppable ui-droppable">
-        <div class="makeMeDraggable innerBox ui-draggable" data-category="dessert" style="position: relative;"><i class="fa fa-birthday-cake"></i></div>
-        <div class="makeMeDraggable innerBox ui-draggable" data-category="driving" style="position: relative;"><i class="fa fa-car"></i></div>
-        <div class="makeMeDraggable innerBox ui-draggable" data-category="energy" style="position: relative;"><i class="fa fa-bolt"></i></div>
-    </div>
-    
-    <div class="randomizer outerBox">
-        <div class="makeMeDroppable innerBox ui-droppable"></div>
-        <div class="makeMeDroppable innerBox ui-droppable"></div>
-        <div class="makeMeDroppable innerBox ui-droppable"></div>
-    </div>
-    
-    <button>Randomize!</button>
- 
-</div>
- 
 
-</body></html>
+<body id="page-top">
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">Start Bootstrap</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="#about">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#services">Services</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <h1>Your Favorite Source of Free Bootstrap Themes</h1>
+                <hr>
+                <p>Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>
+                <a href="#about" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-primary" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Categories</h2>
+                    <hr class="light">
+                    
+                    <div class="categories outerBox makeMeDroppable">
+                        <div class="makeMeDraggable innerBox ui-draggable" data-category="dessert" style="position: relative;"><i class="fa fa-birthday-cake"></i></div>
+                        <div class="makeMeDraggable innerBox ui-draggable" data-category="driving" style="position: relative;"><i class="fa fa-car"></i></div>
+                        <div class="makeMeDraggable innerBox ui-draggable" data-category="energy" style="position: relative;"><i class="fa fa-bolt"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Randomizr</h2>
+                    <hr class="primary">
+                </div>
+                <div class="randomizer outerBox">
+                    <div class="makeMeDroppable innerBox ui-droppable"></div>
+                    <div class="makeMeDroppable innerBox ui-droppable"></div>
+                    <div class="makeMeDroppable innerBox ui-droppable"></div>
+                    <div class="innerBox randomize"><i class="fa fa-play"></i></div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+    <section class="no-padding" id="portfolio">
+        <div class="container-fluid">
+            <div class="row no-gutter">
+                <div class="col-lg-4 col-sm-6">
+                    <a href="#" class="portfolio-box">
+                        <img src="img/portfolio/1.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Category
+                                </div>
+                                <div class="project-name">
+                                    Project Name
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="#" class="portfolio-box">
+                        <img src="img/portfolio/2.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Category
+                                </div>
+                                <div class="project-name">
+                                    Project Name
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="#" class="portfolio-box">
+                        <img src="img/portfolio/3.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Category
+                                </div>
+                                <div class="project-name">
+                                    Project Name
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="#" class="portfolio-box">
+                        <img src="img/portfolio/4.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Category
+                                </div>
+                                <div class="project-name">
+                                    Project Name
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="#" class="portfolio-box">
+                        <img src="img/portfolio/5.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Category
+                                </div>
+                                <div class="project-name">
+                                    Project Name
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="#" class="portfolio-box">
+                        <img src="img/portfolio/6.jpg" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Category
+                                </div>
+                                <div class="project-name">
+                                    Project Name
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <aside class="bg-dark">
+        <div class="container text-center">
+            <div class="call-to-action">
+                <h2>Free Download at Start Bootstrap!</h2>
+                <a href="#" class="btn btn-default btn-xl wow tada">Download Now!</a>
+            </div>
+        </div>
+    </aside>
+
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Let's Get In Touch!</h2>
+                    <hr class="primary">
+                    <p>Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!</p>
+                </div>
+                <div class="col-lg-4 col-lg-offset-2 text-center">
+                    <i class="fa fa-phone fa-3x wow bounceIn"></i>
+                    <p>123-456-6789</p>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+                    <p><a href="mailto:your-email@your-domain.com">feedback@startbootstrap.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/JavaScript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/jquery.fittext.js"></script>
+    <script src="js/wow.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/creative.js"></script>
+
+    <script type="text/javascript">
+
+        $( init );
+
+        function init() {
+          $('.makeMeDraggable').draggable({
+              revert: true
+          });
+          $('.makeMeDroppable').droppable({
+              drop: handleDropEvent
+          });
+        }
+
+        function handleDropEvent( event, ui ) {
+          var draggable = ui.draggable;
+            if($(event.target).children().length <= 0 && !$(event.target).hasClass("categories"))
+            {
+                ui.draggable.clone(false).css("left", "0px").css("top", "0px").appendTo($(event.target)).append("<a class='emptyBox'>X</a>");
+                $(event.target).find(".emptyBox").click(function(){
+                    $(this).parent(".makeMeDraggable").remove();
+                });
+            }
+        }
+        $(document).ready(function(){
+            var categories = "";
+            var lists = {
+                "dessert": ["almond cookie", "ambrosia", "angelfood cake", "apple brown Betty", "apple crisp", "apple pie", "baked Alaska", "baked apple", "baklava", "banana split", "Belgian waffle", "biscotti", "black forest cake", "blueberry muffin", "bombe", "Boston cream pie", "bread pudding", "brownie", "buttercream frosting", "butterscotch", "cake", "cannoli", "caramel apple", "carrot cake", "cheesecake", "cherry pie", "chocolate bar", "chocolate cake", "chocolate chip cookie", "chocolate mousse", "churro", "cinnamon roll", "cobbler", "coconut cake", "coconut cream pie", "coffee cake", "cookie", "crepe Suzette", "cupcake", "custard", "Danish pastry", "dessert", "devil's food cake", "doughnut", "dumplings", "eclair", "flan", "fortune cookie", "French toast", "fritter", "frosting", "frozen yogurt", "fruit cake", "fruit cocktail", "fruit salad", "fudge", "gelatin", "gelato", "gingersnaps", "gingerbread", "honey", "hot-fudge sundae", "ice cream", "ice cream cake", "icing", "jam", "jelly", "jellyroll", "Key lime pie", "ladyfingers", "lemon bars", "lemon meringue pie", "macaroon", "marshmallow", "meringue", "milkshake", "molasses", "mousse", "muffin", "neapolitan ice cream", "nougat", "nut brittle", "oatmeal cookie", "pancakes", "panna cotta", "parfait", "pastry", "peanut brittle", "peanutbutter cookie", "pecan pie", "pie", "poached pears", "popcicle", "popover", "pound cake", "praline", "pudding", "pumpkin pie", "quick bread", "red velvet cake", "rhubarb pie", "raisin bread", "rice pudding", "scone", "sherbet", "shortbread", "s'mores", "snickerdoodle", "soda", "soda bread", "sorbet", "souffle", "sponge cake", "spumoni", "strawberry shortcake", "strudel", "sugar", "sugar cookie", "sundae", "sweet potato pie", "sweet roll", "sweets", "tapioca pudding", "tart", "toasted marshmallow", "toffee", "torte", "trifle", "truffle", "turnover", "upside-down cake", "vanilla cream pie", "vanilla pudding", "waffle", "watermelon ice", "yellow cake", "zabiglone"],
+
+                "driving": ["accelerate", "accelerator", "accident", "airbag", "alley", "arterial road", "asphalt", "auto", "automatic transmission", "automobile", "avenue", "back-up", "back seat", "back seat driver", "barrier", "bicycle", "bike", "boulevard", "brakes", "bridge", "bus", "car", "carpool", "carpool lane", "causeway", "caution", "chauffeur", "circle", "cloverleaf", "clutch", "cobblestone", "construction", "court", "crash", "cruise control", "cul-de-sac", "curve", "danger", "dead end", "defensive driving", "dent", "detour", "diamond lane", "dirt road", "do not enter sign", "double parked", "drive", "driver", "driver's ed", "driver's education", "driver's license", "driveway", "electric car", "emergency", "emission", "entrance ramp", "exhaust", "exit", "exit ramp", "expressway", "fast", "fast lane", "fender", "fill it up", "flat-bed truck", "flat tire", "freeway", "fuel", "fuel efficiency", "fuel tank", "garage", "gas", "gasoline", "gas tank", "gear", "gearshift", "global positioning system", "go", "GPS", "gravel road", "green light", "gridlock", "gutter", "hairpin curve", "headlights", "high-beam", "high-occupancy vehicle lane", "high-octane gas", "highway", "highway patrol", "hill", "HOV lane", "hybrid", "idling", "impact", "indicator", "insurance", "interchange", "intersection", "interstate highway", "jackknifing", "kilometer", "kilometers per hour", "kph", "lane", "learner's permit", "left turn", "license", "lights", "loop", "low-beam", "manual transmission", "map", "mass transit", "merge", "mile", "mile marker", "miles per gallon", "miles per hour", "motor", "motorcycle", "motorway", "mph", "no parking", "no stopping", "oil", "oncoming traffic", "one-way", "overpass", "parallel parking", "park", "parking lot", "parking meter", "parking spot", "parking ticket", "parkway", "pass", "pavement", "pedal", "pedestrian", "pedestrian crossing", "police", "pot hole", "railroad crossing", "ramp", "red light", "registration", "rest area", "rest stop", "reverse", "ride", "right turn", "road", "road closed", "road crew", "road rage", "road trip", "roadway", "rollover", "roundabout", "rush hour", "safety", "scenery", "scenic route", "school zone", "s-curve", "seatbelt", "semi", "shoulder", "sidewalk", "sign", "skid", "slow", "snow plow", "speed", "speed bump", "speed limit", "speeding", "speeding ticket", "speedometer", "state patrol", "steer", "steering wheel", "stop", "stop sign", "street", "street sign", "superhighway", "SUV", "switchbacks", "terrace", "test drive", "ticket", "tire", "toll", "toll road", "tow truck", "traffic", "traffic jam", "traffic light", "traffic sign", "transmission", "transportation", "truck", "truck route", "truck stop", "tunnel", "turn", "turn signal", "under construction", "underpass", "u-turn", "van pool", "vehicle", "warning", "wide load", "yellow light", "yield", "zebra crossing"],
+
+                "energy": ["absorb", "AC", "accumulator", "alternating current", "anthracite coal", "appliance", "battery", "biodiesel", "biofuel", "biomass", "bituminous coal", "blackout", "boiler", "British thermal unit", "Btu", "capacity", "carbon", "carbon footprint", "carbon tax", "charcoal", "chemical energy", "clean energy", "climate change", "coal", "coke", "combustion", "conservation", "crude oil", "current", "dam", "DC", "diesel", "direct current", "drill", "dynamo", "efficiency", "efficient", "electric", "electrical", "electrical grid", "electromagnetic energy", "electron", "energy", "engine", "engineer", "entropy", "environment", "erg", "ethanol", "fossil fuel", "flexible fuel", "flywheel", "fuel", "fuel cell", "furnace", "gas", "gasoline", "gas-turbine", "generate", "generation", "generator", "geothermal", "global warming", "green", "green energy", "greenhouse effect", "greenhouse gas", "grid", "heat", "heat exchange", "high-voltage", "horsepower", "human-powered", "hybrid", "hydrocarbon", "hydroelectric", "hydrogen", "hydrothermal", "industry", "internal combustion engine", "inverter", "jet fuel", "joule", "Kelvin scale", "kilowatt", "kilowatt-hour", "kinetic energy", "light", "liquefied petroleum gas", "magnetic energy", "megawatt", "methane", "methanol", "mining", "motor", "natural gas", "nuclear", "nuclear energy", "nuclear power", "nuclear reactor", "nucleus", "off-the-grid", "oil", "oil rig", "peak oil", "peat", "petroleum", "photon", "photovoltaic", "photovoltaic panel", "pollution", "potential energy", "power", "power grid", "power lines", "power plant", "power station", "power transmission", "propane", "public utility", "radiant", "radiate", "reactor", "reciprocating engine", "reflect", "renewable", "reservoir", "shale", "solar panel", "solar power", "static electricity", "steam", "steam engine", "steam turbine", "sun", "sunlight", "sunshine", "sustainable", "temperature", "therm", "thermal energy", "thermodynamics", "tidal power", "transmission lines", "transmit", "turbine", "utilities", "volt", "waste", "watt", "wattage", "wave power", "wind", "wind farm", "windmill", "wind power", "wind turbine", "work"]
+            };
+            $(".randomize").click(function() {
+                var allCategories = $(".randomizer").find(".makeMeDroppable").has(".makeMeDraggable");
+               allCategories.each(function(index){
+                   var list = lists[$(this).find(".makeMeDraggable").attr("data-category")],
+                       randomNumber = Math.floor(Math.random()*list.length),
+                       lastRandomNumber = 0;
+                   categories += list[randomNumber];
+                   if(index != allCategories.length - 1)
+                   {
+                     categories += ", ";  
+                   }
+
+               });
+                alert(categories);
+                categories = "";
+            });
+        });
+    </script>
+</body>
+
+</html>
