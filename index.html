@@ -53,6 +53,16 @@
     .energy:before {
         content: "\f0e7";
     }
+    .instagramFeed {
+        position: relative;
+    }
+    .noClicks {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+    }
 </style>
 <script src="js/jquery-2.1.4.min.js"></script>
 <script>
@@ -125,7 +135,10 @@ $(document).ready(function(){
 <div data-role="page" id="gallery" class="galleryPage" data-theme="a" data-title="Gallery">
     
     <div data-role="main" class="ui-content">
-        <iframe src="http://widget.websta.me/in/tag:awesome/?r=1&w=2&h=10&b=0&p=0&sb=off" allowtransparency="true" frameborder="0" style="border:none; width: 100%; height: 500px;" ></iframe>
+        <div class="instagramFeed">
+            <div class="noClicks"></div>
+            <iframe src="http://widget.websta.me/in/tag:awesome/?r=1&w=2&h=10&b=0&p=0&sb=off" allowtransparency="true" frameborder="0" style="border:none; width: 100%; height: 2500px;" ></iframe>
+        </div>
     </div>
     
 </div>
