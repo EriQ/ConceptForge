@@ -80,10 +80,7 @@ $(document).bind('mobileinit',function(){
     $.mobile.pushStateEnabled = false;
 	
 });
-var networkState = navigator.network.connection.type
-if (networkState == Connection.NONE){
-  alert('no internet ');
-};
+
 $(document).ready(function(){
     $("button").click(function() {
         var allCategories = $(".randomizer").find(".category");
