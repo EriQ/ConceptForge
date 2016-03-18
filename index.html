@@ -80,6 +80,10 @@ $(document).bind('mobileinit',function(){
     $.mobile.pushStateEnabled = false;
 	
 });
+var networkState = navigator.network.connection.type
+if (networkState == Connection.NONE){
+  alert('no internet ');
+};
 $(document).ready(function(){
     $("button").click(function() {
         var allCategories = $(".randomizer").find(".category");
@@ -103,7 +107,8 @@ $(document).ready(function(){
             $(this).remove();
         });
     }); 
-    var url = 'http://iconosquare.com/tagFeed/awesome';
+    var url = 'http://iconosquare.com/tagFeed/awesome',
+        storage = window.localStorage;
     $.ajax({
         url:'http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=1000&callback=?&q=' + encodeURIComponent(url),
         cache: false,
@@ -121,6 +126,9 @@ $(document).ready(function(){
                 $(".instagramFeed").append("<img src='"+$(this).attr("src")+"' />")
             });
             $(".hiddenInstagramFeed").empty();
+        },
+        fail: function(error){
+            console.log(error);
         }
     });
     
