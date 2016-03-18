@@ -98,11 +98,27 @@ $(document).ready(function(){
     $.each(lists, function(key, value) {
         $(".categories").append("<div class='category' data-category='"+key+"'><i class='fa "+key+"'></i></div>");
     });
-    
-    $(".categories .category").on("dblclick", function() {
+    (function($) {
+      $.fn.nodoubletapzoom = function() {
+          $(this).bind('touchstart', function preventZoom(e) {
+            var t2 = e.timeStamp
+              , t1 = $(this).data('lastTouch') || t2
+              , dt = t2 - t1
+              , fingers = e.originalEvent.touches.length;
+            $(this).data('lastTouch', t2);
+            if (!dt || dt > 300 || fingers > 1) return; // not double-tap
+
+            e.preventDefault(); // double tap - prevent the zoom
+            // also synthesize click events we just swallowed up
+            $(this).trigger('dblclick');
+          });
+      };
+    })(jQuery);
+    $(".category").nodoubletapzoom();
+    $(".categories .category").on("dblclick", function(e) {
         $(this).clone().appendTo(".randomizer").on("dblclick", function() {
             $(this).remove();
-        });
+        }).nodoubletapzoom();
     }); 
     var url = 'http://iconosquare.com/tagFeed/belugawhale',
         storage = window.localStorage;
@@ -130,11 +146,6 @@ $(document).ready(function(){
     });
     
 });  
-    
-    document.addEventListener("deviceready", onDeviceReady, false);
-    function onDeviceReady() {
-        navigator.splashscreen.show();
-    }
 </script>
 <script src="jqm/jquery.mobile-1.4.5.min.js"></script>
 
@@ -143,6 +154,7 @@ $(document).ready(function(){
 <body>
 <div data-role="header" data-position="fixed" data-tap-toggle="false" data-id="header" data-theme="a">
     <h1>Concept Forge</h1>
+    
 </div>
 
 <div data-role="page" id="home" class="homePage" data-theme="a" data-title="Welcome">
