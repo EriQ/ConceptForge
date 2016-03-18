@@ -15,6 +15,8 @@
         Eric Higdon
     </author>
 	<gap:plugin name="cordova-plugin-whitelist" version="1.0.0" source="npm" />
+	<gap:plugin name="cordova-plugin-network-information" version="1.0.0" source="npm" />
+    
  	<allow-navigation href="http://erichigdon.com/*"/>
 	<access origin="*" />
 	
