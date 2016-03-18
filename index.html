@@ -53,15 +53,12 @@
     .energy:before {
         content: "\f0e7";
     }
-    .instagramFeed {
-        position: relative;
+    .hiddenInstagramFeed {
+        display: none;
     }
-    .noClicks {
-        position: absolute;
-        left: 0;
-        top: 0;
-        right: 0;
-        bottom: 0;
+    .instagramFeed img {
+        width: 50%;
+        margin: -3px 0px;
     }
 </style>
 <script src="js/jquery-2.1.4.min.js"></script>
@@ -106,6 +103,26 @@ $(document).ready(function(){
             $(this).remove();
         });
     }); 
+    var url = 'http://iconosquare.com/tagFeed/awesome';
+    $.ajax({
+        url:'http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=1000&callback=?&q=' + encodeURIComponent(url),
+        cache: false,
+        dataType: "jsonp",
+        success:function(feed) {
+            $.each(feed.responseData.feed.entries, function(index) {
+                $(".hiddenInstagramFeed").append(this.content);
+                //$(".hiddenInstagramFeed").find("img:eq("+index+")").appendTo("")
+                if(index == 29)
+                {
+                    return false;
+                }
+            });
+            $(".hiddenInstagramFeed").find("img").each(function(){
+                $(".instagramFeed").append("<img src='"+$(this).attr("src")+"' />")
+            });
+            $(".hiddenInstagramFeed").empty();
+        }
+    });
     
 });    
 </script>
@@ -135,9 +152,12 @@ $(document).ready(function(){
 <div data-role="page" id="gallery" class="galleryPage" data-theme="a" data-title="Gallery">
     
     <div data-role="main" class="ui-content">
+        <div class="hiddenInstagramFeed">
+            
+        </div>
+        
         <div class="instagramFeed">
-            <div class="noClicks"></div>
-            <iframe src="http://widget.websta.me/in/tag:awesome/?r=1&w=2&h=10&b=0&p=0&sb=off" allowtransparency="true" frameborder="0" style="border:none; width: 100%; height: 2500px;" ></iframe>
+            
         </div>
     </div>
     
