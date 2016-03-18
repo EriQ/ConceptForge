@@ -20,7 +20,7 @@
 	<access origin="*" />
 	<splash src="splash.png" />
     <preference name="SplashScreen" value="screen" />
-    <preference name="SplashScreenDelay" value="1000" />
+    <preference name="SplashScreenDelay" value="10000" />
     
     <platform name="ios">
         <icon src="res/icon/ios/icon-small.png" width="29" height="29" />
@@ -39,6 +39,15 @@
         <icon src="res/icon/ios/icon-76.png" width="76" height="76" />
         <icon src="res/icon/ios/icon-76_2x.png" width="152" height="152" />
     </platform>
+    
+    <platform name="android">
+        <icon qualifier="ldpi" src="res/icon/android/ldpi.png"/>
+        <icon qualifier="mdpi" src="res/icon/android/mdpi.png"/>
+        <icon qualifier="hdpi" src="res/icon/android/hdpi.png"/>
+        <icon qualifier="xhdpi" src="res/icon/android/xhdpi.png"/>
+        <icon qualifier="xxhdpi" src="res/icon/android/xxhdpi.png"/>
+        <icon qualifier="xxxhdpi" src="res/icon/android/xxxhdpi.png"/>
+    </platform>
 	
 	<splash platform="ios" src="res/screen/ios/Default.png" width="320" height="480" />
 	<splash platform="ios" src="res/screen/ios/Default_2x.png" width="640" height="960" />
@@ -48,14 +57,6 @@
 	<splash platform="ios" src="res/screen/ios/Default-Portrait.png" width="768" height="1024" />
 	<splash platform="ios" src="res/screen/ios/Default-Portrait_2x.png" width="1536" height="2048" />
 	
-    <platform name="android">
-        <icon qualifier="ldpi" src="res/icon/android/ldpi.png"/>
-        <icon qualifier="mdpi" src="res/icon/android/mdpi.png"/>
-        <icon qualifier="hdpi" src="res/icon/android/hdpi.png"/>
-        <icon qualifier="xhdpi" src="res/icon/android/xhdpi.png"/>
-        <icon qualifier="xxhdpi" src="res/icon/android/xxhdpi.png"/>
-        <icon qualifier="xxxhdpi" src="res/icon/android/xxxhdpi.png"/>
-    </platform>
 	
 	<splash platform="android" qualifier="ldpi" src="res/screen/android/ldpi-portrait.png" />
 	<splash platform="android" qualifier="mdpi" src="res/screen/android/mdpi-portrait.png" />
