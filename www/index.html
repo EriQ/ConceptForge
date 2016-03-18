@@ -60,6 +60,9 @@
         width: 50%;
         margin: -3px 0px;
     }
+    .pageLink {
+        float: right;
+    }
 </style>
 <script src="js/jquery-2.1.4.min.js"></script>
 <script>
@@ -153,11 +156,11 @@ $(document).ready(function(){
 </head>
 <body>
 <div data-role="header" data-position="fixed" data-tap-toggle="false" data-id="header" data-theme="a">
+    <a class="pageLink ui-btn-right" href="#gallery"><i class="fa fa-th-large"></i></a>
     <h1>Concept Forge</h1>
-    
 </div>
 
-<div data-role="page" id="home" class="homePage" data-theme="a" data-title="Welcome">
+<div data-role="page" id="home" class="homePage swipablePage" data-theme="a" data-title="Home">
     
     <div data-role="main" class="ui-content">
         <div class="categories outerBox makeMeDroppable">
@@ -171,7 +174,7 @@ $(document).ready(function(){
     
 </div>
     
-<div data-role="page" id="gallery" class="galleryPage" data-theme="a" data-title="Gallery">
+<div data-role="page" id="gallery" class="galleryPage swipablePage" data-theme="a" data-title="Gallery">
     
     <div data-role="main" class="ui-content">
         <div class="hiddenInstagramFeed">

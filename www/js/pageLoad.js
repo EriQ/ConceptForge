@@ -1,14 +1,3 @@
-$( document ).on( "pagecreate", ".homePage", function() {
-	$( document ).on( "swipeleft", ".ui-page", function( event ) {
-		var next = $( this ).next().attr("id");
-		$.mobile.changePage( "#"+next, { transition: "slide", changeHash: true });
-	});
-	$( document ).on( "swiperight", ".ui-page", function( event ) {
-		var next = $( this ).prev().attr("id");
-		$.mobile.changePage( "#"+next, { transition: "slide", reverse: true, changeHash: true });
-	});
-	
-});
 $(function() {
     $( "[data-role='navbar']" ).navbar();
     $( "[data-role='header'], [data-role='footer']" ).toolbar();
@@ -19,6 +8,17 @@ $( document ).on( "pagecontainerchange", function() {
     // which value is equal to the text of the nav button
     // For example, on first page: <div data-role="page" data-title="Info">
     var current = $( ".ui-page-active" ).jqmData( "title" );
-    
-	$(".loading").fadeOut(500);
+    $(".pageLink").show();
+    if(current == "Gallery")
+    {
+        $(".pageLink").html("<i class='fa fa-home'></i>").attr("href", "#home");
+    }
+    else if(current == "Home")
+    {
+        $(".pageLink").html("<i class='fa fa-th-large'></i>").attr("href", "#gallery");
+    }
+    else
+    {
+        $(".pageLink").hide();
+    }
 });
