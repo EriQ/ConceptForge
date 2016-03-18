@@ -1,7 +1,7 @@
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.phonegap.helloworld" version="1.0.0">
-  <name>ConceptForge2</name>
-  <description>Hello World sample application that responds to the deviceready event.</description>
-  <author href="http://phonegap.com" email="support@phonegap.com">PhoneGap Team</author>
+  <name>Concept Forge</name>
+  <description>A fully designed functional list randomizing app tailored for creatives. The app will use algorythms to create randomly generated combinations of words. It will allow up to 5 word combinations for extended customization. Users can choose from pre-made lists or generate their own lists. The app is designed to help creatives stay sharp with their medium or practice of choice. It will be free to use.</description>
+  <author href="http://erichigdon.com" email="Eric.S.Higdon@gmail.com">Eric Higdon</author>
   <content src="index.html"/>
   <preference name="permissions" value="none"/>
   <preference name="orientation" value="default"/>
