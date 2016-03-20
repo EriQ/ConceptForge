@@ -33,6 +33,17 @@ $( document ).on( "pagecontainerchange", function() {
     }
 });
 
+function checkConnection(){
+    var networkState;
+    var test = cordova.exec(
+            function(winParam) {networkState = winParam;},
+            function(error) {alert("Network Manager error: "+error);},
+            "NetworkStatus",
+            "getConnectionInfo",
+            []
+    );
+    return networkState;
+}
 $(document).ready(function(){
     $("button").click(function() {
         var allCategories = $(".randomizer").find(".category");
@@ -97,18 +108,5 @@ $(document).ready(function(){
         }
     });
     
-    
-    
-    function checkConnection(){
-        var networkState;
-        var test = cordova.exec(
-                function(winParam) {networkState = winParam;},
-                function(error) {alert("Network Manager error: "+error);},
-                "NetworkStatus",
-                "getConnectionInfo",
-                []
-        );
-        return networkState;
-    }
-    alert(checkConnection());
+    $(".dump").html(checkConnection());
 });
