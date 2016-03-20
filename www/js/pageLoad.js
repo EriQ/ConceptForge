@@ -72,52 +72,38 @@ $(document).ready(function(){
             $(this).remove(); 
         }).nodoubletapzoom();
     }); 
-    var url = 'http://iconosquare.com/tagFeed/belugawhale',
+    var url = 'http://widget.websta.me/rss/tag/belugawhale',
         storage = window.localStorage;
     $.ajax({
         url:'http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=1000&callback=?&q=' + encodeURIComponent(url),
         cache: false,
         dataType: "jsonp",
         success:function(feed) {
+            console.log(feed);
             $.each(feed.responseData.feed.entries, function(index) {
                 $(".hiddenInstagramFeed").append(this.content);
-                //$(".hiddenInstagramFeed").find("img:eq("+index+")").appendTo("")
                 if(index == 29)
                 {
                     return false;
                 }
             });
             $(".hiddenInstagramFeed").find("img").each(function(){
-                $(".instagramFeed").append("<img src='"+$(this).attr("src")+"' />");
+                if($(this).height() == "306")
+                {
+                    $(".instagramFeed").append('<div class="img" data-comment="'+$(this).parent().parent().next().find("strong").html()+'" data-url="'+$(this).attr("src")+'" style="background: url('+$(this).attr("src")+') no-repeat; background-size:cover; background-position: center center; width: 50%; height: '+$(window).width() / 2+'px"></div>');
+                }
             });
-            $(".instagramFeed").find("img").on("click", function(){
-                $("body").append("<div class='backdrop'><div class='fullheight'></div><div class='img'><img src='"+$(this).attr("src")+"'/><i class='fa fa-times'></i></div></div>");
+            $(".instagramFeed").find(".img").on("click", function(){
+                $("body").append("<div class='backdrop'><div class='fullheight'></div><div class='imageContainer'><img src='"+$(this).attr("data-url")+"'/><i class='fa fa-times'></i><p>"+$(this).attr("data-comment")+"</p></div></div>");
                 $(".backdrop").on("click", function() {
                     $(this).remove();
                 });
             });
-            $(".hiddenInstagramFeed").empty();
+            //$(".hiddenInstagramFeed").empty();
         },
         fail: function(error){
             console.log(error);
         }
     });
     
-    function checkConnection() {
-        var networkState = navigator.connection.type;
-
-        var states = {};
-        states[Connection.UNKNOWN]  = 'Unknown connection';
-        states[Connection.ETHERNET] = 'Ethernet connection';
-        states[Connection.WIFI]     = 'WiFi connection';
-        states[Connection.CELL_2G]  = 'Cell 2G connection';
-        states[Connection.CELL_3G]  = 'Cell 3G connection';
-        states[Connection.CELL_4G]  = 'Cell 4G connection';
-        states[Connection.CELL]     = 'Cell generic connection';
-        states[Connection.NONE]     = 'No network connection';
-
-        alert('Connection type: ' + states[networkState]);
-    }
-
-    checkConnection();
 });
