@@ -125,6 +125,8 @@ $(document).ready(function(){
     }); 
     var url = 'http://iconosquare.com/tagFeed/belugawhale',
         storage = window.localStorage;
+    
+    alert(navigator.connection.type);
     $.ajax({
         url:'http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=1000&callback=?&q=' + encodeURIComponent(url),
         cache: false,
