@@ -88,7 +88,13 @@ $(document).ready(function(){
                 }
             });
             $(".hiddenInstagramFeed").find("img").each(function(){
-                $(".instagramFeed").append("<img src='"+$(this).attr("src")+"' />")
+                $(".instagramFeed").append("<img src='"+$(this).attr("src")+"' />");
+            });
+            $(".instagramFeed").find("img").on("click", function(){
+                $("body").append("<div class='backdrop'><div class='fullheight'></div><div class='img'><img src='"+$(this).attr("src")+"'/><i class='fa fa-times'></i></div></div>");
+                $(".backdrop").on("click", function() {
+                    $(this).remove();
+                });
             });
             $(".hiddenInstagramFeed").empty();
         },
