@@ -198,6 +198,15 @@ button.randomize.ui-btn.ui-shadow.ui-corner-all:hover {
     border-bottom: 1px solid #e7b157;
     font-weight: bold;
 }
+button.btn.btn-default {
+    background: transparent;
+    border: none;
+    color: #e7b157;
+    font-size: 15pt;
+}
+.btn.disabled {
+    opacity: .3;
+}
 .ui-header.ui-bar-a.ui-header-fixed {
     background-color: #212732;
     color: #e7b157;

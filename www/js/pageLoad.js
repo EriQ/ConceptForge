@@ -172,6 +172,7 @@ $(document).ready(function(){
     // Instance the tour
     tour = new Tour({
       backdrop: true,
+      template: "<div class='popover tour'><div class='arrow'></div><h3 class='popover-title'></h3><div class='popover-content'></div><div class='popover-navigation'><button class='btn btn-default' data-role='prev'><i class='fa fa-arrow-left'></i></button><button class='btn btn-default' data-role='next'><i class='fa fa-arrow-right'></i></button><button class='btn btn-default' data-role='end'><i class='fa fa-times'></i></button></div></div>",
       steps: [
           {
             element: ".category:eq(0)",
