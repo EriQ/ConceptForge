@@ -108,6 +108,53 @@ $(document).ready(function(){
         toggleEnabled();
     }); 
     
+    
+    // Instance the tour
+    var tour = new Tour({
+      backdrop: true,
+      steps: [
+          {
+            element: ".category:eq(0)",
+            title: "Add a Category",
+            content: "Double tap a category to add it to your results. You can add up to 6 categories.",
+            placement: "bottom",
+            reflex: true,
+            onNext: function (tour) {
+                if($("button.randomize").attr("disabled") == "disabled")
+                    $(".category:eq(0)").dblclick();
+            }
+          },
+          {
+            element: "button.randomize",
+            title: "Forge a Concept",
+            content: "Click the <strong>Forge!</strong> button to pick a random word from each of your selected categories.",
+            placement: "top",
+            reflex: true,
+            onNext: function (tour) {
+                $("button.randomize").click();
+            }
+          },
+          {
+            element: ".results",
+            title: "View Your Concept",
+            content: "Concept Forge will create a list to drive your concept. Screenshot the results to save or share it.",
+            placement: "bottom",
+            reflex: true,
+            onPrev: function (tour) {
+                $.mobile.changePage( "#home", { transition: "slide", changeHash: true });
+            }
+          }
+      ],
+      onEnd: function (tour) {
+          $(".randomizer").empty();
+      }
+    });
+
+    // Initialize the tour
+    tour.init();
+
+    // Start the tour
+    tour.start();
     //Commented out until I have a chance to further debug the connection issues
     /*$.ajax({
         url:'http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=1000&callback=?&q=' + encodeURIComponent(url),
