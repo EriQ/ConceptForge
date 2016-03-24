@@ -26,6 +26,7 @@ var categories = "",
   };
 })(jQuery);
 function loadInsta(feed) {
+    $(".instagramFeed").empty();
     $.each(feed.responseData.feed.entries, function(index) {
         $(".hiddenInstagramFeed").append(this.content);
         if(index == 29)
@@ -88,16 +89,19 @@ $(document).ready(function(){
         var allCategories = $(".randomizer").find(".category");
        allCategories.each(function(index){
            var list = lists[$(this).attr("data-category")];
-           $(".results").append("<div><i class='fa "+$(this).attr("data-category")+"'></i><p>"+$(this).attr("data-category")+"</p><p>"+list[Math.floor(Math.random()*list.length)]+"</p></div>");
+           $(".results").append("<div class='category'><i class='fa "+$(this).attr("data-category")+"'></i><p>"+list[Math.floor(Math.random()*list.length)]+"</p></div>");
        });
         $.mobile.changePage( "#result", { transition: "slide", changeHash: true });
-        $(".resultLink").show();
     });
-    $(".backLink").on("click", function() {
-        $.mobile.changePage( "#home", { transition: "slide", changeHash: true });
-        $(".resultLink").hide();
-    });
+    
     $.each(lists, function(key, value) {
+        $(".categories").append("<div class='category' data-category='"+key+"'><i class='fa "+key+"'></i><p>"+key+"</p></div>");
+        $(".categories").append("<div class='category' data-category='"+key+"'><i class='fa "+key+"'></i><p>"+key+"</p></div>");
+        $(".categories").append("<div class='category' data-category='"+key+"'><i class='fa "+key+"'></i><p>"+key+"</p></div>");
+        
+        
+        $(".categories").append("<div class='category' data-category='"+key+"'><i class='fa "+key+"'></i><p>"+key+"</p></div>");
+        $(".categories").append("<div class='category' data-category='"+key+"'><i class='fa "+key+"'></i><p>"+key+"</p></div>");
         $(".categories").append("<div class='category' data-category='"+key+"'><i class='fa "+key+"'></i><p>"+key+"</p></div>");
     });
     $(".category").nodoubletapzoom();
@@ -160,7 +164,7 @@ $(document).ready(function(){
     });
     
     //Commented out until I have a chance to further debug the connection issues
-    /*$.ajax({
+    $.ajax({
         url:'http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=1000&callback=?&q=' + encodeURIComponent(url),
         cache: false,
         dataType: "jsonp",
@@ -175,6 +179,6 @@ $(document).ready(function(){
             else
                 $(".instagramFeed").append("<p>Unable to connect to the gallery. Please try again later.</p>")
         }
-    }); */
+    });
 
 });
