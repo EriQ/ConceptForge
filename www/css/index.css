@@ -23,7 +23,7 @@ h3 {
     padding: 5%;
     border: 1.5px solid #e7b157;
     margin: -6px auto 19px auto;
-    overflow: scroll;
+    overflow: auto;
     border-radius: 5px;
 }
 .randomizer.outerBox {
