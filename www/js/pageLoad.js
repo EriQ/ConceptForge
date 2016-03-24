@@ -215,6 +215,7 @@ $(document).ready(function(){
       ],
       onEnd: function (tour) {
           $(".randomizer").empty();
+          $.mobile.changePage( "#home", { transition: "slide", changeHash: true });
       }
     });
     tour.init();
