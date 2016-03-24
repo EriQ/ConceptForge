@@ -3,6 +3,9 @@
     color: #A9BDC9;
     text-shadow: none;
 }
+.ui-header-fixed {
+    padding-top: 10px;
+}
 h2 {
     margin: -10px 0px 20px 0px;
     font-size: 16pt;
@@ -173,4 +176,5 @@ a.ui-link.ui-btn.ui-shadow.ui-corner-all {
     box-shadow: none;
     line-height: 22pt;
     border-radius: 0px;
+    position: relative;
 }
