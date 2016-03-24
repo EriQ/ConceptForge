@@ -96,26 +96,21 @@ $(document).ready(function(){
         }).nodoubletapzoom();
     }); 
     
-    if(navigator.onLine)
-    {
-        $.ajax({
-            url:'http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=1000&callback=?&q=' + encodeURIComponent(url),
-            cache: false,
-            dataType: "jsonp",
-            success:function(feed) {
-                loadInsta(feed);
-                storage.setItem("instaFeed", JSON.stringify(feed));
-            },
-            fail: function(error){
-                console.log("There was an error :"+error);
-                if(storage.getItem("instaFeed") != null)
-                    loadInsta(JSON.parse(storage.getItem("instaFeed")));
-            }
-        }); 
-    }
-    else
-    {
-        $(".instagramFeed").append("<p>You must be online to view the gallery.</p>")
-    }
+    $.ajax({
+        url:'http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=1000&callback=?&q=' + encodeURIComponent(url),
+        cache: false,
+        dataType: "jsonp",
+        success:function(feed) {
+            loadInsta(feed);
+            storage.setItem("instaFeed", JSON.stringify(feed));
+        },
+        fail: function(error){
+            console.log("There was an error :"+error);
+            if(storage.getItem("instaFeed") != null)
+                loadInsta(JSON.parse(storage.getItem("instaFeed")));
+            else
+                $(".instagramFeed").append("<p>Unable to connect to the gallery. Please try again later.</p>")
+        }
+    }); 
 
 });
