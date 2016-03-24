@@ -47,6 +47,7 @@
         Define a specific version of PhoneGap to build into your app.
         <preference name="phonegap-version"       value="3.5.0" />
     -->
+    <feature name="api.phonegap.com/1.0/network"/>
 
     <!-- Plugins -->
 
