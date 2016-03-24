@@ -18,21 +18,32 @@ h3 {
     color: #e7b157;
 }
 .outerBox {
-    width: 85%;
+    width: 90%;
     height: 286px;
-    padding: 5%;
+    padding: 3% 0% 7% 0%;
     border: 1.5px solid #e7b157;
     margin: -6px auto 19px auto;
     overflow: auto;
     border-radius: 5px;
+    white-space: nowrap;
+}
+.outerBox.categories {
+    overflow:hidden;
 }
 .randomizer.outerBox {
     height: 61px;
     margin-bottom: 15px;
     white-space: nowrap;
+    padding: 3.5% 0% 3% 0%;
 }
 .results.outerBox {
-    width: 60%;
+    width: 75%;
+}
+.categorySlide {
+    white-space: normal;
+    display: inline-block;
+    vertical-align:top;
+    width: 100%;
 }
 .category {
     display: inline-block;
@@ -71,7 +82,7 @@ h3 {
     display: none;
 }
 button.ui-btn.ui-shadow.ui-corner-all {
-    width: 95%;
+    width: 91%;
     padding: 18px;
     margin: auto;
     border: none;
@@ -79,6 +90,12 @@ button.ui-btn.ui-shadow.ui-corner-all {
     color: #212732;
     text-shadow: none;
     font-size: 15pt;
+    transition: .125s;
+}
+button.randomize.ui-btn.ui-shadow.ui-corner-all:hover {
+    border: 1.5px solid #e7b157;
+    background: transparent;
+    color: #e7b157;
 }
 #result .buttons {
     text-align: center;
@@ -95,6 +112,14 @@ button.ui-btn.ui-shadow.ui-corner-all {
     color: #e7b157 !important;
     text-shadow: none;
     margin: 0px 10px;
+}
+.resultLink:hover {
+    color: #212732 !important;
+    background: #e7b157;
+}
+.rerunLink:hover i {
+    -webkit-animation: spin .5s linear;
+    animation: spin .5s linear;
 }
 .dessert:before {
     content: "\f1fd";
@@ -177,4 +202,26 @@ a.ui-link.ui-btn.ui-shadow.ui-corner-all {
     line-height: 22pt;
     border-radius: 0px;
     position: relative;
+}
+
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(179deg);
+    transform: rotate(179deg);
+  }
+}
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(179deg);
+    transform: rotate(179deg);
+  }
 }
