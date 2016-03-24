@@ -96,7 +96,7 @@ $(document).ready(function(){
         }).nodoubletapzoom();
     }); 
     
-    $.ajax({
+    /*$.ajax({
         url:'http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=1000&callback=?&q=' + encodeURIComponent(url),
         cache: false,
         dataType: "jsonp",
@@ -111,6 +111,6 @@ $(document).ready(function(){
             else
                 $(".instagramFeed").append("<p>Unable to connect to the gallery. Please try again later.</p>")
         }
-    }); 
+    }); */
 
 });
