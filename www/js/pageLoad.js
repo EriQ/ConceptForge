@@ -46,7 +46,16 @@ function loadInsta(feed) {
     });
     $(".hiddenInstagramFeed").empty();
 }    
-
+function toggleEnabled() {
+    if($(".randomizer").find(".category").length > 0)
+    {
+        $("button.randomize").attr("disabled", false)
+    }
+    else
+    {
+        $("button.randomize").attr("disabled", "disabled")
+    }
+}
 $(function() {
     $( "[data-role='navbar']" ).navbar();
     $( "[data-role='header']" ).toolbar();
@@ -94,7 +103,9 @@ $(document).ready(function(){
     $(".categories .category").on("dblclick", function(e) {
         $(this).clone().appendTo(".randomizer").on("dblclick", function() {
             $(this).remove(); 
+            toggleEnabled();
         }).nodoubletapzoom();
+        toggleEnabled();
     }); 
     
     //Commented out until I have a chance to further debug the connection issues
