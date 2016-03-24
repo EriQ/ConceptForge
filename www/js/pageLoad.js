@@ -57,18 +57,13 @@ $( document ).on( "pagecontainerchange", function() {
 });
 
 $(document).ready(function(){
-    $("button").click(function() {
+    $("button.randomize").click(function() {
         var allCategories = $(".randomizer").find(".category");
        allCategories.each(function(index){
            var list = lists[$(this).attr("data-category")];
-           categories += list[Math.floor(Math.random()*list.length)];
-           if(index != allCategories.length - 1)
-           {
-             categories += ", ";  
-           }
+           $(".results").append("<div><i class='fa "+$(this).attr("data-category")+"'></i><p>"+list[Math.floor(Math.random()*list.length)]+"</p></div>");
        });
-        alert(categories);
-        categories = "";
+        $.mobile.changePage( "#result", { transition: "slide", changeHash: true });
     });
     $.each(lists, function(key, value) {
         $(".categories").append("<div class='category' data-category='"+key+"'><i class='fa "+key+"'></i></div>");
