@@ -1,6 +1,7 @@
 var categories = "",
     url = 'http://widget.websta.me/rss/tag/belugawhale',
     storage = window.localStorage,
+    tour = "",
     lists = {
     "dessert": ["almond cookie", "ambrosia", "angelfood cake", "apple brown Betty", "apple crisp", "apple pie", "baked Alaska", "baked apple", "baklava", "banana split", "Belgian waffle", "biscotti", "black forest cake", "blueberry muffin", "bombe", "Boston cream pie", "bread pudding", "brownie", "buttercream frosting", "butterscotch", "cake", "cannoli", "caramel apple", "carrot cake", "cheesecake", "cherry pie", "chocolate bar", "chocolate cake", "chocolate chip cookie", "chocolate mousse", "churro", "cinnamon roll", "cobbler", "coconut cake", "coconut cream pie", "coffee cake", "cookie", "crepe Suzette", "cupcake", "custard", "Danish pastry", "dessert", "devil's food cake", "doughnut", "dumplings", "eclair", "flan", "fortune cookie", "French toast", "fritter", "frosting", "frozen yogurt", "fruit cake", "fruit cocktail", "fruit salad", "fudge", "gelatin", "gelato", "gingersnaps", "gingerbread", "honey", "hot-fudge sundae", "ice cream", "ice cream cake", "icing", "jam", "jelly", "jellyroll", "Key lime pie", "ladyfingers", "lemon bars", "lemon meringue pie", "macaroon", "marshmallow", "meringue", "milkshake", "molasses", "mousse", "muffin", "neapolitan ice cream", "nougat", "nut brittle", "oatmeal cookie", "pancakes", "panna cotta", "parfait", "pastry", "peanut brittle", "peanutbutter cookie", "pecan pie", "pie", "poached pears", "popcicle", "popover", "pound cake", "praline", "pudding", "pumpkin pie", "quick bread", "red velvet cake", "rhubarb pie", "raisin bread", "rice pudding", "scone", "sherbet", "shortbread", "s'mores", "snickerdoodle", "soda", "soda bread", "sorbet", "souffle", "sponge cake", "spumoni", "strawberry shortcake", "strudel", "sugar", "sugar cookie", "sundae", "sweet potato pie", "sweet roll", "sweets", "tapioca pudding", "tart", "toasted marshmallow", "toffee", "torte", "trifle", "truffle", "turnover", "upside-down cake", "vanilla cream pie", "vanilla pudding", "waffle", "watermelon ice", "yellow cake", "zabiglone"],
 
@@ -107,6 +108,56 @@ $(document).ready(function(){
         }).nodoubletapzoom();
         toggleEnabled();
     }); 
+    
+    
+    // Instance the tour
+    tour = new Tour({
+      backdrop: true,
+      steps: [
+          {
+            element: ".category:eq(0)",
+            title: "Add a Category",
+            content: "Double tap a category to add it to your results. You can add up to 6 categories.",
+            placement: "bottom",
+            reflex: true,
+            onNext: function (tour) {
+                if($("button.randomize").attr("disabled") == "disabled")
+                    $(".category:eq(0)").dblclick();
+            }
+          },
+          {
+            element: "button.randomize",
+            title: "Forge a Concept",
+            content: "Click the <strong>Forge!</strong> button to pick a random word from each of your selected categories.",
+            placement: "top",
+            reflex: true,
+            onNext: function (tour) {
+                $("button.randomize").click();
+            }
+          },
+          {
+            element: ".results",
+            title: "View Your Concept",
+            content: "Concept Forge will create a list to drive your concept. Screenshot the results to save or share it.",
+            placement: "bottom",
+            reflex: true,
+            onPrev: function (tour) {
+                $.mobile.changePage( "#home", { transition: "slide", changeHash: true });
+            }
+          }
+      ],
+      onEnd: function (tour) {
+          $(".randomizer").empty();
+      }
+    });
+    tour.init();
+    tour.start();
+    $("button.startTour").on("click", function() {
+       storage.setItem("tour_current_step", 0);
+       storage.setItem("tour_end", null);
+       tour.init(true);
+       tour.start(true); 
+    });
     
     //Commented out until I have a chance to further debug the connection issues
     /*$.ajax({

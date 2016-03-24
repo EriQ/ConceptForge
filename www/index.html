@@ -18,92 +18,8 @@
 
 <link rel="stylesheet" href="jqm/jquery.mobile.theme-1.4.5.min.css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-<style>
-    .outerBox {
-        width: 90%;
-        height: 145px;
-        padding: 15px;
-        border: 3px solid #999;
-        margin: 0px auto 25px auto;
-        white-space: nowrap;
-        overflow: scroll;
-    }
-    .category {
-        width: 100px;
-        height: 76px;
-        text-align: center;
-        display: inline-block;
-        vertical-align: top;
-        margin: 15px;
-        border: 2px solid #bbb;
-        background: #FFF;
-        color: #bbb;
-        font-size: 36pt;
-        padding-top: 24px;
-    }
-    .innerBox.makeMeDroppable .makeMeDraggable {
-        margin: 6px;
-    }
-    .dessert:before {
-        content: "\f1fd";
-    }
-    .driving:before {
-        content: "\f1b9";
-    }
-    .energy:before {
-        content: "\f0e7";
-    }
-    .hiddenInstagramFeed {
-        display: none;
-    }
-    .instagramFeed .img {
-        display: inline-block;
-        margin: -3px 0px;
-    }
-    .pageLink {
-        float: right;
-    }
-    .backdrop {
-        background: rgba(0, 0, 0, .8);
-        position: fixed;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        z-index: 1001;
-        text-align: center;
-    }
-    .backdrop .imageContainer {
-        width: 90%;
-        display: inline-block;
-        vertical-align: middle;
-        position: relative;
-    }
-    .backdrop .imageContainer img {
-        max-width:100%;
-        width: 100%;
-    }
-    .fullheight {
-        display: inline-block;
-        width: 0px;
-        height: 100%;
-        vertical-align: middle;
-    }
-    .backdrop i {
-        display: block;
-        text-align: right;
-        color: #FFF;
-        font-size: 20pt;
-        position: absolute;
-        top: 10px;
-        right: 10px;
-    }
-    .backdrop p {
-        color: #fff;
-        margin-top: 0px;
-        text-shadow: none;
-    }
-</style>
+<link href="css/bootstrap-tour-standalone.min.css" rel="stylesheet">
+<link href="css/index.css" rel="stylesheet">
 <script src="js/jquery-2.1.4.min.js"></script>
 <script>
     
@@ -118,6 +34,7 @@ $(document).bind('mobileinit',function(){
   
 </script>
 <script src="jqm/jquery.mobile-1.4.5.min.js"></script>
+<script src="js/bootstrap-tour-standalone.min.js"></script>
 
 
 </head>
@@ -139,7 +56,8 @@ $(document).bind('mobileinit',function(){
         <div class="randomizer outerBox">
         </div>
 
-        <button class="randomize" disabled>Randomize!</button>
+        <button class="randomize" disabled="disabled">Forge!</button>
+        <button class="startTour">Start Tour</button>
     </div>
     
 </div>
