@@ -218,7 +218,7 @@ $(document).ready(function(){
     });
     tour.init();
     tour.start();
-    $("button.startTour").on("click", function() {
+    $("a.startTour").on("click", function() {
        storage.setItem("tour_current_step", 0);
        storage.setItem("tour_end", null);
        tour.init(true);
