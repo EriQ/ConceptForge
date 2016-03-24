@@ -8,6 +8,22 @@ var categories = "",
 
     "energy": ["absorb", "AC", "accumulator", "alternating current", "anthracite coal", "appliance", "battery", "biodiesel", "biofuel", "biomass", "bituminous coal", "blackout", "boiler", "British thermal unit", "Btu", "capacity", "carbon", "carbon footprint", "carbon tax", "charcoal", "chemical energy", "clean energy", "climate change", "coal", "coke", "combustion", "conservation", "crude oil", "current", "dam", "DC", "diesel", "direct current", "drill", "dynamo", "efficiency", "efficient", "electric", "electrical", "electrical grid", "electromagnetic energy", "electron", "energy", "engine", "engineer", "entropy", "environment", "erg", "ethanol", "fossil fuel", "flexible fuel", "flywheel", "fuel", "fuel cell", "furnace", "gas", "gasoline", "gas-turbine", "generate", "generation", "generator", "geothermal", "global warming", "green", "green energy", "greenhouse effect", "greenhouse gas", "grid", "heat", "heat exchange", "high-voltage", "horsepower", "human-powered", "hybrid", "hydrocarbon", "hydroelectric", "hydrogen", "hydrothermal", "industry", "internal combustion engine", "inverter", "jet fuel", "joule", "Kelvin scale", "kilowatt", "kilowatt-hour", "kinetic energy", "light", "liquefied petroleum gas", "magnetic energy", "megawatt", "methane", "methanol", "mining", "motor", "natural gas", "nuclear", "nuclear energy", "nuclear power", "nuclear reactor", "nucleus", "off-the-grid", "oil", "oil rig", "peak oil", "peat", "petroleum", "photon", "photovoltaic", "photovoltaic panel", "pollution", "potential energy", "power", "power grid", "power lines", "power plant", "power station", "power transmission", "propane", "public utility", "radiant", "radiate", "reactor", "reciprocating engine", "reflect", "renewable", "reservoir", "shale", "solar panel", "solar power", "static electricity", "steam", "steam engine", "steam turbine", "sun", "sunlight", "sunshine", "sustainable", "temperature", "therm", "thermal energy", "thermodynamics", "tidal power", "transmission lines", "transmit", "turbine", "utilities", "volt", "waste", "watt", "wattage", "wave power", "wind", "wind farm", "windmill", "wind power", "wind turbine", "work"]
 };
+(function($) {
+  $.fn.nodoubletapzoom = function() {
+      $(this).bind('touchstart', function preventZoom(e) {
+        var t2 = e.timeStamp
+          , t1 = $(this).data('lastTouch') || t2
+          , dt = t2 - t1
+          , fingers = e.originalEvent.touches.length;
+        $(this).data('lastTouch', t2);
+        if (!dt || dt > 300 || fingers > 1) return; // not double-tap
+
+        e.preventDefault(); // double tap - prevent the zoom
+        // also synthesize click events we just swallowed up
+        $(this).trigger('dblclick');
+      });
+  };
+})(jQuery);
 function loadInsta(feed) {
     $.each(feed.responseData.feed.entries, function(index) {
         $(".hiddenInstagramFeed").append(this.content);
@@ -33,7 +49,7 @@ function loadInsta(feed) {
 
 $(function() {
     $( "[data-role='navbar']" ).navbar();
-    $( "[data-role='header'], [data-role='footer']" ).toolbar();
+    $( "[data-role='header']" ).toolbar();
 });
 // Update the contents of the toolbars
 $( document ).on( "pagecontainerchange", function() {
@@ -57,33 +73,23 @@ $( document ).on( "pagecontainerchange", function() {
 });
 
 $(document).ready(function(){
-    $("button.randomize").click(function() {
+    $("button.randomize, a.rerunLink").on("click", function() {
+        $(".results").empty();
         var allCategories = $(".randomizer").find(".category");
        allCategories.each(function(index){
            var list = lists[$(this).attr("data-category")];
-           $(".results").append("<div><i class='fa "+$(this).attr("data-category")+"'></i><p>"+list[Math.floor(Math.random()*list.length)]+"</p></div>");
+           $(".results").append("<div><i class='fa "+$(this).attr("data-category")+"'></i><p>"+$(this).attr("data-category")+"</p><p>"+list[Math.floor(Math.random()*list.length)]+"</p></div>");
        });
         $.mobile.changePage( "#result", { transition: "slide", changeHash: true });
+        $(".resultLink").show();
+    });
+    $(".backLink").on("click", function() {
+        $.mobile.changePage( "#home", { transition: "slide", changeHash: true });
+        $(".resultLink").hide();
     });
     $.each(lists, function(key, value) {
-        $(".categories").append("<div class='category' data-category='"+key+"'><i class='fa "+key+"'></i></div>");
+        $(".categories").append("<div class='category' data-category='"+key+"'><i class='fa "+key+"'></i><p>"+key+"</p></div>");
     });
-    (function($) {
-      $.fn.nodoubletapzoom = function() {
-          $(this).bind('touchstart', function preventZoom(e) {
-            var t2 = e.timeStamp
-              , t1 = $(this).data('lastTouch') || t2
-              , dt = t2 - t1
-              , fingers = e.originalEvent.touches.length;
-            $(this).data('lastTouch', t2);
-            if (!dt || dt > 300 || fingers > 1) return; // not double-tap
-
-            e.preventDefault(); // double tap - prevent the zoom
-            // also synthesize click events we just swallowed up
-            $(this).trigger('dblclick');
-          });
-      };
-    })(jQuery);
     $(".category").nodoubletapzoom();
     $(".categories .category").on("dblclick", function(e) {
         $(this).clone().appendTo(".randomizer").on("dblclick", function() {
@@ -91,6 +97,7 @@ $(document).ready(function(){
         }).nodoubletapzoom();
     }); 
     
+    //Commented out until I have a chance to further debug the connection issues
     /*$.ajax({
         url:'http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=1000&callback=?&q=' + encodeURIComponent(url),
         cache: false,
