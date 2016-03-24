@@ -181,8 +181,31 @@ button.randomize.ui-btn.ui-shadow.ui-corner-all:hover {
     text-shadow: none;
 }
 .tour-backdrop {
+    opacity: .6;
+    filter: alpha(opacity=60);
+}
+.popover {
+    background: #212732;
+    border: 1.5px solid #e7b157;
+}
+.popover>.arrow:after {
+    border-bottom-color: #e7b157 !important;
+    border-top-color: #e7b157 !important;
+}
+.popover-title {
+    font-size: 18px;
+    background-color: #212732;
+    border-bottom: 1px solid #e7b157;
+    font-weight: bold;
+}
+button.btn.btn-default {
+    background: transparent;
+    border: none;
+    color: #e7b157;
+    font-size: 15pt;
+}
+.btn.disabled {
     opacity: .3;
-    filter: alpha(opacity=30);
 }
 .ui-header.ui-bar-a.ui-header-fixed {
     background-color: #212732;
@@ -203,7 +226,16 @@ a.ui-link.ui-btn.ui-shadow.ui-corner-all {
     border-radius: 0px;
     position: relative;
 }
-
+a.startTour {
+    text-align: right;
+    display: block;
+    margin: 15px 5% 0px 0px;
+    color: #A9BDC9;
+    text-shadow: none;
+}
+a.startTour:hover {
+    color: #e7b157;
+}
 
 @-webkit-keyframes spin {
   0% {

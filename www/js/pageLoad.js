@@ -172,6 +172,7 @@ $(document).ready(function(){
     // Instance the tour
     tour = new Tour({
       backdrop: true,
+      template: "<div class='popover tour'><div class='arrow'></div><h3 class='popover-title'></h3><div class='popover-content'></div><div class='popover-navigation'><button class='btn btn-default' data-role='prev'><i class='fa fa-arrow-left'></i></button><button class='btn btn-default' data-role='next'><i class='fa fa-arrow-right'></i></button><button class='btn btn-default' data-role='end'><i class='fa fa-times'></i></button></div></div>",
       steps: [
           {
             element: ".category:eq(0)",
@@ -214,11 +215,12 @@ $(document).ready(function(){
       ],
       onEnd: function (tour) {
           $(".randomizer").empty();
+          $.mobile.changePage( "#home", { transition: "slide", changeHash: true });
       }
     });
     tour.init();
     tour.start();
-    $("button.startTour").on("click", function() {
+    $("a.startTour").on("click", function() {
        storage.setItem("tour_current_step", 0);
        storage.setItem("tour_end", null);
        tour.init(true);
