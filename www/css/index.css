@@ -1,27 +1,97 @@
+.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper, html, body, .ui-page {
+    background: #212732;
+    color: #A9BDC9;
+    text-shadow: none;
+}
+h2 {
+    margin: -10px 0px 20px 0px;
+    font-size: 16pt;
+    text-align: center;
+    line-height: 16pt;
+    color: #e7b157;
+}
+h3 {
+    text-align: center;
+    color: #e7b157;
+}
 .outerBox {
-    width: 90%;
-    height: 145px;
-    padding: 15px;
-    border: 3px solid #999;
-    margin: 0px auto 25px auto;
-    white-space: nowrap;
+    width: 85%;
+    height: 286px;
+    padding: 5%;
+    border: 1.5px solid #e7b157;
+    margin: -6px auto 19px auto;
     overflow: scroll;
+    border-radius: 5px;
+}
+.randomizer.outerBox {
+    height: 61px;
+    margin-bottom: 15px;
+    white-space: nowrap;
+}
+.results.outerBox {
+    width: 60%;
 }
 .category {
-    width: 100px;
-    height: 76px;
-    text-align: center;
     display: inline-block;
+    width: 33%;
     vertical-align: top;
-    margin: 15px;
-    border: 2px solid #bbb;
-    background: #FFF;
-    color: #bbb;
-    font-size: 36pt;
-    padding-top: 24px;
+    margin: 5px 0px 15px 0px;
+    font-size: 10pt;
+    text-shadow: none;
+    text-align: center;
 }
-.innerBox.makeMeDroppable .makeMeDraggable {
-    margin: 6px;
+.randomizer .category {
+    margin: 0px;
+}
+.results .category {
+    width: 100%;
+    display: block;
+    margin: 0px 0px 15px 0px;
+}
+.results .category p {
+    font-size: 14pt;
+    line-height: 14pt;
+}
+.category i {
+    background: #e7b157;
+    padding: 14px 12px;
+    font-size: 20pt;
+    width: 35px;
+    height: 31px;
+    border-radius: 5px;
+    color: #212732;
+}
+.category p {
+    margin: 2px 0px;
+}
+.randomizer .category p {
+    display: none;
+}
+button.ui-btn.ui-shadow.ui-corner-all {
+    width: 95%;
+    padding: 18px;
+    margin: auto;
+    border: none;
+    background: #e7b157;
+    color: #212732;
+    text-shadow: none;
+    font-size: 15pt;
+}
+#result .buttons {
+    text-align: center;
+}
+.resultLink {
+    display: inline-block;
+    width: 60px;
+    height: 37px;
+    border: 1.5px solid #e7b157;
+    padding: 11.5px 0px;
+    font-size: 23pt;
+    line-height: 28pt;
+    border-radius: 100px;
+    color: #e7b157 !important;
+    text-shadow: none;
+    margin: 0px 10px;
 }
 .dessert:before {
     content: "\f1fd";
@@ -85,4 +155,22 @@
 .tour-backdrop {
     opacity: .3;
     filter: alpha(opacity=30);
+}
+.ui-header.ui-bar-a.ui-header-fixed {
+    background-color: #212732;
+    color: #e7b157;
+    text-shadow: none !important;
+    border: none;
+    font-weight: bold !important;
+}
+a.ui-link.ui-btn.ui-shadow.ui-corner-all {
+    padding: 0px;
+    font-size: 22pt;
+    border: none;
+    background: transparent;
+    text-shadow: none;
+    color: #e7b157;
+    box-shadow: none;
+    line-height: 22pt;
+    border-radius: 0px;
 }
