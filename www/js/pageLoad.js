@@ -157,9 +157,31 @@ $(document).ready(function(){
     $(".category").nodoubletapzoom();
     $(".categories .category").on("dblclick", function(e) {
         $(this).clone().appendTo(".randomizer").on("dblclick", function() {
-            $(this).remove(); 
+            $(this).find("i").animate(
+            {
+                "padding": "0px", 
+                "font-size": "0pt", 
+                "width": "0px", 
+                "height": "0px"
+            },
+            "fast").parent().animate({
+                "width": "0px"
+            },
+            {
+                "complete": function()
+                {
+                    $(this).remove();
+                }
+            },
+            "fast");
+            
             toggleEnabled();
-        }).nodoubletapzoom();
+        }).find("i").animate({
+            "padding": "14px 12px",
+            "font-size": "20pt",
+            "width": "35px",
+            "height": "31px"
+        }, "fast").parent().nodoubletapzoom();
         toggleEnabled();
     }); 
     $( ".categories" ).on( "swipeleft", function(){
@@ -216,6 +238,7 @@ $(document).ready(function(){
       onEnd: function (tour) {
           $(".randomizer").empty();
           $.mobile.changePage( "#home", { transition: "slide", changeHash: true });
+          toggleEnabled();
       }
     });
     tour.init();
