@@ -171,11 +171,11 @@ $(document).ready(function(){
                 "complete": function()
                 {
                     $(this).remove();
+                    toggleEnabled();
                 }
             },
             "fast");
             
-            toggleEnabled();
         }).find("i").animate({
             "padding": "14px 12px",
             "font-size": "20pt",
