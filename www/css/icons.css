@@ -1,0 +1,24 @@
+.Animals:before {
+    content: "\f0f5";
+}
+.Age:before {
+    content: "\f073";
+}
+.Businesses:before {
+    content: "\f1ad";
+}
+.Colors:before {
+    content: "\f043";
+}
+.Genders:before {
+    content: "\f228";
+}
+.Height:before {
+    content: "\f034";
+}
+.Organizations:before {
+    content: "\f0f7";
+}
+.Size:before {
+    content: "\f065";
+}
