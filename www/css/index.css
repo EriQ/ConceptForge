@@ -127,15 +127,6 @@ button.randomize.ui-btn.ui-shadow.ui-corner-all:hover {
     -webkit-animation: spin .5s linear;
     animation: spin .5s linear;
 }
-.dessert:before {
-    content: "\f1fd";
-}
-.driving:before {
-    content: "\f1b9";
-}
-.energy:before {
-    content: "\f0e7";
-}
 .hiddenInstagramFeed {
     display: none;
 }
