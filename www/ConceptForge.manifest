@@ -1,0 +1,34 @@
+CACHE MANIFEST
+# This is a comment.
+# Cache manifest version 0.0.1
+# If you change the version number in this comment,
+# the cache manifest is no longer byte-for-byte
+# identical.
+ 
+CACHE:
+index.html?update=1
+main.html?update=1
+jqm/jquery.mobile-1.4.5.min.css?update=1
+jqm/jquery.mobile-1.4.5.min.js?update=1
+jqm/jquery.mobile-1.4.5.min.map?update=1
+jqm/jquery.mobile.external-png-1.4.5.min.css?update=1
+jqm/jquery.mobile.icons-1.4.5.min.css?update=1
+jqm/jquery.mobile.inline-png-1.4.5.min.css?update=1
+jqm/jquery.mobile.inline-svg-1.4.5.min.css?update=1
+jqm/jquery.mobile.structure-1.4.5.min.css?update=1
+jqm/jquery.mobile.theme-1.4.5.min.css?update=1
+css/bootstrap-tour-standalone.min.css?update=1
+css/font-awesome.min.css?update=1
+css/index.css?update=1
+css/icons.css?update=1
+img/logo.png?update=1
+js/bootstrap-tour-standalone.min.js?update=1
+js/jquery-2.1.4.min.js?update=1
+js/index.js?update=1
+js/pageLoad.js?update=1
+fonts/FontAwesome.otf?update=1
+fonts/fontawesome-webfont.ttf?update=1
+fonts/fontawesome-webfont.eot?update=1
+fonts/fontawesome-webfont.woff?update=1
+fonts/fontawesome-webfont.svg?update=1
+fonts/fontawesome-webfont.woff2?update=1
