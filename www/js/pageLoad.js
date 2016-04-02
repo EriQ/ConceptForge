@@ -140,6 +140,7 @@ $(document).ready(function(){
     });
     slide += "</div>";
     $(".categories").append(slide);
+    $(".categoriesSmallBar").width(1/$(".categorySlide").length * 100 + "%");
     $(".category").nodoubletapzoom();
     $(".categories .category").on("dblclick", function(e) {
         $(this).addClass("adding").clone().appendTo(".randomizer").on("dblclick", function() {
@@ -173,9 +174,27 @@ $(document).ready(function(){
     }); 
     $( ".categories" ).on( "swipeleft", function(){
         $(this).animate({scrollLeft: $(this).scrollLeft() + $(".categorySlide").width()}, 400);
+        if(($(".categoriesSmallBar").position().left / $(".categoriesBar").width()) + (1/$(".categorySlide").length) < 1 - (1/$(".categorySlide").length))
+        {
+            $(".categoriesSmallBar").animate({left: (($(".categoriesSmallBar").position().left / $(".categoriesBar").width()) + (1/$(".categorySlide").length)) * 100 + "%"});  
+        }
+        else
+        {
+             $(".categoriesSmallBar").animate({left: (1 - (1/$(".categorySlide").length)) * 100 + "%"});
+        }
+        
     });
     $( ".categories" ).on( "swiperight", function(){
         $(this).animate({scrollLeft: $(this).scrollLeft() - $(".categorySlide").width()}, 400);
+        if(($(".categoriesSmallBar").position().left / $(".categoriesBar").width()) - (1/$(".categorySlide").length) > 0.08)
+        {
+            $(".categoriesSmallBar").animate({left: (($(".categoriesSmallBar").position().left / $(".categoriesBar").width()) - (1/$(".categorySlide").length)) * 100 + "%"});
+        }
+        else
+        {
+            $(".categoriesSmallBar").animate({left: "0%"});
+        }
+        
     });
     
     // Instance the tour
