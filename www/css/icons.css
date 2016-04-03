@@ -22,31 +22,3 @@
 .Size:before {
     content: "\f065";
 }
-.Buildings:before {
-    content: "\f1ad \f1ad";
-    font-size: 16pt;
-}
-.Creatures:before {
-    content: "\f02d";
-}
-.Emotions:before {
-    content: "\f118";
-}
-.Family:before {
-    content: "\f0c0";
-}
-.Insects:before {
-    content: "\f188";
-}
-.Metals:before {
-    content: "\f13d";
-}
-.Numbers:before {
-    content: "\f1ec";
-}
-.Occupations:before {
-    content: "\f0b1";
-}
-.Personality:before {
-    content: "\f007";
-}
