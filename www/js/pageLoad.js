@@ -142,7 +142,7 @@ $(document).ready(function(){
     $(".categories").append(slide);
     $(".category").nodoubletapzoom();
     $(".categories .category").on("dblclick", function(e) {
-        $(this).addClass("adding").clone().appendTo(".randomizer").on("dblclick", function() {
+        $(this).clone().appendTo(".randomizer").on("dblclick", function() {
             $(this).find("i").animate(
             {
                 "padding": "0px", 
@@ -168,7 +168,6 @@ $(document).ready(function(){
             "width": "35px",
             "height": "31px"
         }, "fast").parent().nodoubletapzoom();
-        $(this).removeClass("adding")
         toggleEnabled();
     }); 
     $( ".categories" ).on( "swipeleft", function(){
