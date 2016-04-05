@@ -64,10 +64,6 @@ h3 {
     color: #fff;
     transition: .5s;
 }
-.categories .category.adding:after {
-    font-size: 48pt;
-    transition: none;
-}
 .randomizer .category {
     margin: 0px;
 }
