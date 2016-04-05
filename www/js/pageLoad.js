@@ -143,7 +143,7 @@ $(document).ready(function(){
     $(".categoriesSmallBar").width(1/$(".categorySlide").length * 100 + "%");
     $(".category").nodoubletapzoom();
     $(".categories .category").on("click", function() {
-        $(this).clone().appendTo(".randomizer").on("click", function() {
+        $(this).clone().appendTo(".randomizer").on("dblclick", function() {
             $(this).find("i").animate(
             {
                 "padding": "0px", 
