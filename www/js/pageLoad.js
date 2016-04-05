@@ -142,8 +142,8 @@ $(document).ready(function(){
     $(".categories").append(slide);
     $(".categoriesSmallBar").width(1/$(".categorySlide").length * 100 + "%");
     $(".category").nodoubletapzoom();
-    $(".categories .category").on("dblclick", function(e) {
-        $(this).clone().appendTo(".randomizer").on("dblclick", function() {
+    $(".categories .category").on("click", function() {
+        $(this).clone().appendTo(".randomizer").on("click", function() {
             $(this).find("i").animate(
             {
                 "padding": "0px", 
