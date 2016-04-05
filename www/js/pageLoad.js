@@ -140,9 +140,10 @@ $(document).ready(function(){
     });
     slide += "</div>";
     $(".categories").append(slide);
+    $(".categoriesSmallBar").width(1/$(".categorySlide").length * 100 + "%");
     $(".category").nodoubletapzoom();
     $(".categories .category").on("dblclick", function(e) {
-        $(this).addClass("adding").clone().appendTo(".randomizer").on("dblclick", function() {
+        $(this).clone().appendTo(".randomizer").on("dblclick", function() {
             $(this).find("i").animate(
             {
                 "padding": "0px", 
@@ -168,14 +169,34 @@ $(document).ready(function(){
             "width": "35px",
             "height": "31px"
         }, "fast").parent().nodoubletapzoom();
-        $(this).removeClass("adding")
+        $(".randomizer").animate({
+            "scrollLeft": $(".randomizer").find(".category").width() * $(".randomizer").find(".category").length
+        });
         toggleEnabled();
     }); 
     $( ".categories" ).on( "swipeleft", function(){
         $(this).animate({scrollLeft: $(this).scrollLeft() + $(".categorySlide").width()}, 400);
+        if(($(".categoriesSmallBar").position().left / $(".categoriesBar").width()) + (1/$(".categorySlide").length) < 1 - (1/$(".categorySlide").length))
+        {
+            $(".categoriesSmallBar").animate({left: (($(".categoriesSmallBar").position().left / $(".categoriesBar").width()) + (1/$(".categorySlide").length)) * 100 + "%"});  
+        }
+        else
+        {
+             $(".categoriesSmallBar").animate({left: (1 - (1/$(".categorySlide").length)) * 100 + "%"});
+        }
+        
     });
     $( ".categories" ).on( "swiperight", function(){
         $(this).animate({scrollLeft: $(this).scrollLeft() - $(".categorySlide").width()}, 400);
+        if(($(".categoriesSmallBar").position().left / $(".categoriesBar").width()) - (1/$(".categorySlide").length) > 0.08)
+        {
+            $(".categoriesSmallBar").animate({left: (($(".categoriesSmallBar").position().left / $(".categoriesBar").width()) - (1/$(".categorySlide").length)) * 100 + "%"});
+        }
+        else
+        {
+            $(".categoriesSmallBar").animate({left: "0%"});
+        }
+        
     });
     
     // Instance the tour
