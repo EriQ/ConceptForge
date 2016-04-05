@@ -113,7 +113,6 @@ $( document ).on( "pagecontainerchange", function() {
 });
 
 $(document).ready(function(){
-    startTrackerWithId(trackingCode);
     $("button.randomize, a.rerunLink").on("click", function() {
         $(".results").empty();
         var allCategories = $(".randomizer").find(".category");
@@ -147,7 +146,6 @@ $(document).ready(function(){
     $(".categories .category").on("click", function() {
         trackEvent("category", "add", $(this).attr("data-category"), $(this).attr("data-category"));
         $(this).clone().appendTo(".randomizer").on("dblclick", function() {
-            trackEvent("category", "remove", $(this).attr("data-category"), $(this).attr("data-category"));
             $(this).find("i").animate(
             {
                 "padding": "0px", 
