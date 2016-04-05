@@ -64,6 +64,10 @@ h3 {
     color: #fff;
     transition: .5s;
 }
+.categories .category.adding:after {
+    font-size: 48pt;
+    transition: none;
+}
 .randomizer .category {
     margin: 0px;
 }
@@ -242,22 +246,6 @@ a.startTour {
 }
 a.startTour:hover {
     color: #e7b157;
-}
-
-/* Slider Bars */
-.sliderBar {
-    height: 3px;
-    width: 87%;
-    margin: auto;
-    margin-top: -21px;
-    margin-bottom: 21px;
-    position: relative;
-}
-.sliderBar .sliderBar {
-    background: #e7b157;
-    margin: 0px;
-    position:absolute;
-    left:0%;
 }
 
 @-webkit-keyframes spin {
