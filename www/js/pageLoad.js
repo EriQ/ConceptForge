@@ -2,7 +2,6 @@ var categories = "",
     url = 'http://widget.websta.me/rss/tag/belugawhale',
     storage = window.localStorage,
     tour = "",
-    trackingCode = "UA-76038106-1",
     lists = {
     "Age": ["Elderly", "Older", "Ancient", "Old", "Young", "Adolescent", "Middle Aged", "Teen", "20s", "30s", "40s", "50s", "60s", "70s", "Baby", "Toddler", "Newborn", "Child"],
         
@@ -144,7 +143,6 @@ $(document).ready(function(){
     $(".categoriesSmallBar").width(1/$(".categorySlide").length * 100 + "%");
     $(".category").nodoubletapzoom();
     $(".categories .category").on("click", function() {
-        trackEvent("category", "add", $(this).attr("data-category"), $(this).attr("data-category"));
         $(this).clone().appendTo(".randomizer").on("dblclick", function() {
             $(this).find("i").animate(
             {
