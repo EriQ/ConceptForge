@@ -112,6 +112,7 @@ $( document ).on( "pagecontainerchange", function() {
 });
 
 $(document).ready(function(){
+    analytics.startTrackerWithId('YOUR-ID-HERE');
     $("button.randomize, a.rerunLink").on("click", function() {
         $(".results").empty();
         var allCategories = $(".randomizer").find(".category");
