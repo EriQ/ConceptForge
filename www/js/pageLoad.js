@@ -241,7 +241,7 @@ $(document).ready(function(){
           {
             element: ".randomizer .category:eq(0)",
             title: "Remove a Category",
-            content: "Double tap to remove a category you have selected from the list. Slide Icons to rearrange them.",
+            content: "Double tap to remove a category you have selected from the list.",
             placement: "top",
             reflex: true,
             onNext: function (tour) {
