@@ -37,6 +37,20 @@ var categories = "",
 
     "Size": ["Thin", "Fat", "Average", "Enormous", "Skinny", "Muscular", "Frail", "Lean", "Thick"]
 };
+//console.log(device);
+if(typeof device != "undefined")
+{
+    var deviceID = device.uuid;  
+}
+else
+{
+    var deviceID = "debug";
+}
+ga('create', 'UA-76038106-2', {
+    'storage': 'none',
+    'clientId':deviceID
+}); 
+
 (function($) {
   $.fn.nodoubletapzoom = function() {
       $(this).bind('touchstart', function preventZoom(e) {
@@ -100,22 +114,25 @@ $( document ).on( "pagecontainerchange", function() {
     if(current == "Gallery")
     {
         $(".pageLink").html("<i class='fa fa-home'></i>").attr("href", "#home");
+        ga('send', 'pageview', {'page': 'gallery'});
     }
     else if(current == "Home")
     {
         $(".pageLink").html("<i class='fa fa-th-large'></i>").attr("href", "#gallery");
+        ga('send', 'pageview', {'page': 'home'});
     }
     else
     {
         $(".pageLink").hide();
+        ga('send', 'pageview', {'page': 'results'});
     }
 });
 
 $(document).ready(function(){
-    //analytics.startTrackerWithId('UA-76038106-1');
     $("button.randomize, a.rerunLink").on("click", function() {
         $(".results").empty();
         var allCategories = $(".randomizer").find(".category");
+        ga('send', 'event', "randomize", $(this).attr("data-buttonName"), allCategories.length);
        allCategories.each(function(index){
            var list = lists[$(this).attr("data-category")];
            $(".results").append("<div class='category'><i class='fa "+$(this).attr("data-category")+"'></i><p>"+list[Math.floor(Math.random()*list.length)]+"</p></div>");
@@ -144,7 +161,9 @@ $(document).ready(function(){
     $(".categoriesSmallBar").width(1/$(".categorySlide").length * 100 + "%");
     $(".category").nodoubletapzoom();
     $(".categories .category").on("click", function() {
+        ga('send', 'event', "category", "add", $(this).attr("data-category"));
         $(this).clone().appendTo(".randomizer").on("dblclick", function() {
+            ga('send', 'event', "category", "remove", $(this).attr("data-category"));
             $(this).find("i").animate(
             {
                 "padding": "0px", 
@@ -212,6 +231,7 @@ $(document).ready(function(){
             placement: "bottom",
             reflex: true,
             onNext: function (tour) {
+                ga('send', 'event', "advanceTour", this.id);
                 if($("button.randomize").attr("disabled") == "disabled")
                     $(".category:eq(0)").dblclick();
             }
@@ -223,6 +243,7 @@ $(document).ready(function(){
             placement: "top",
             reflex: true,
             onNext: function (tour) {
+                ga('send', 'event', "advanceTour", this.id);
                 $("button.randomize").click();
             }
           },
@@ -232,6 +253,9 @@ $(document).ready(function(){
             content: "Concept Forge will create a list to drive your concept. Screenshot the results to save or share it.",
             placement: "bottom",
             reflex: true,
+            onNext: function(tour) {
+                ga('send', 'event', "advanceTour", this.id);
+            },
             onPrev: function (tour) {
                 $.mobile.changePage( "#home", { transition: "slide", changeHash: true });
             }
@@ -241,13 +265,17 @@ $(document).ready(function(){
             title: "Forge a New Concept",
             content: "You can click the <strong>refresh</strong> button to create a new concept from the same categories.",
             placement: "top",
-            reflex: true
+            reflex: true,
+            onNext: function(tour) {
+                ga('send', 'event', "advanceTour", this.id);
+            }
           }
       ],
       onEnd: function (tour) {
           $(".randomizer").empty();
           $.mobile.changePage( "#home", { transition: "slide", changeHash: true });
           toggleEnabled();
+          ga('send', 'event', "closeTour", tour._current);
       }
     });
     tour.init();
@@ -256,7 +284,8 @@ $(document).ready(function(){
        storage.setItem("tour_current_step", 0);
        storage.setItem("tour_end", null);
        tour.init(true);
-       tour.start(true); 
+       tour.start(true);
+       ga('send', 'event', "startTour"); 
     });
     
     //Commented out until I have a chance to further debug the connection issues
