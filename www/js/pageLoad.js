@@ -37,15 +37,16 @@ var categories = "",
 
     "Size": ["Thin", "Fat", "Average", "Enormous", "Skinny", "Muscular", "Frail", "Lean", "Thick"]
 };
-//console.log(device);
-if(typeof device != "undefined")
+if(storage.getItem("device_ID") != null)
 {
-    var deviceID = device.uuid;  
+    var deviceID = storage.getItem("device_ID");
 }
 else
 {
-    var deviceID = "debug";
+    var deviceID = Array(16+1).join((Math.random().toString(36)+'00000000000000000').slice(2, 18)).slice(0, 16) + Array(16+1).join((Math.random().toString(36)+'00000000000000000').slice(2, 18)).slice(0, 16);  
+    storage.setItem("device_ID", deviceID);
 }
+console.log(deviceID);
 ga('create', 'UA-76038106-2', {
     'storage': 'none',
     'clientId':deviceID
