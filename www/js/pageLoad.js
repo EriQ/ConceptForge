@@ -227,21 +227,31 @@ $(document).ready(function(){
       template: "<div class='popover tour'><div class='arrow'></div><h3 class='popover-title'></h3><div class='popover-content'></div><div class='popover-navigation'><button class='btn btn-default' data-role='prev'><i class='fa fa-arrow-left'></i></button><button class='btn btn-default' data-role='next'><i class='fa fa-arrow-right'></i></button><button class='btn btn-default' data-role='end'><i class='fa fa-times'></i></button></div></div>",
       steps: [
           {
-            element: ".category:eq(0)",
+            element: ".categories .category:eq(0)",
             title: "Add a Category",
-            content: "Double tap a category to add it to your results. You can add up to 6 categories.",
+            content: "Tap to add a category from the list. You can add as many categories as you want, and you can also add the same category multiple times There are multiple list pages to scroll through.",
             placement: "bottom",
             reflex: true,
             onNext: function (tour) {
                 ga('send', 'event', "advanceTour", this.id);
                 if($("button.randomize").attr("disabled") == "disabled")
-                    $(".category:eq(0)").dblclick();
+                    $(".categories .category:eq(0)").click();
+            }
+          },
+          {
+            element: ".randomizer .category:eq(0)",
+            title: "Remove a Category",
+            content: "Double tap to remove a category you have selected from the list. Slide Icons to rearrange them.",
+            placement: "top",
+            reflex: true,
+            onNext: function (tour) {
+                ga('send', 'event', "advanceTour", this.id);
             }
           },
           {
             element: "button.randomize",
             title: "Forge a Concept",
-            content: "Click the <strong>Forge!</strong> button to pick a random word from each of your selected categories.",
+            content: "Tap the <strong>Randomize</strong> Button to get a random word from each of the categories you have selected.",
             placement: "top",
             reflex: true,
             onNext: function (tour) {
@@ -252,7 +262,7 @@ $(document).ready(function(){
           {
             element: ".results",
             title: "View Your Concept",
-            content: "Concept Forge will create a list to drive your concept. Screenshot the results to save or share it.",
+            content: "Concept Forge will create a list to inspire your new concept. Screenshot the results to save or share it.",
             placement: "bottom",
             reflex: true,
             onNext: function(tour) {
@@ -265,7 +275,7 @@ $(document).ready(function(){
           {
             element: ".rerunLink",
             title: "Forge a New Concept",
-            content: "You can click the <strong>refresh</strong> button to create a new concept from the same categories.",
+            content: "Click the Refresh button to generate a new concept from the same categories.",
             placement: "top",
             reflex: true,
             onNext: function(tour) {
