@@ -19,7 +19,12 @@
   <preference name="android-minSdkVersion" value="14"/>
   <preference name="android-installLocation" value="auto"/>
   <preference name="SplashScreen" value="screen" />
-  <preference name="SplashScreenDelay" value="10000" />
+  <preference name="SplashScreenDelay" value="3000" />
+  <preference name="SplashMaintainAspectRatio" value="true" />
+  <preference name="SplashShowOnlyFirstTime" value="false" />
+  <preference name="FadeSplashScreen" value="true"/>
+  <preference name="FadeSplashScreenDuration" value="500"/>
+  <preference name="ShowSplashScreenSpinner" value="false"/>
   <plugin name="org.apache.cordova.splashscreen"/>
   <icon src="icon.png"/>
   <icon src="www/res/icon/android/icon-36-ldpi.png" platform="android" qualifier="ldpi"/>
@@ -36,19 +41,21 @@
   <icon src="www/res/icon/windows-phone/icon-48.png" platform="winphone"/>
   <icon src="www/res/icon/windows-phone/icon-173-tile.png" platform="winphone" role="background"/>
   <splash src="splash.png" />
-  <splash src="www/res/screen/android/screen-ldpi-portrait.png" platform="android" qualifier="port-ldpi"/>
-  <splash src="www/res/screen/android/screen-mdpi-portrait.png" platform="android" qualifier="port-mdpi"/>
-  <splash src="www/res/screen/android/screen-hdpi-portrait.png" platform="android" qualifier="port-hdpi"/>
-  <splash src="www/res/screen/android/screen-xhdpi-portrait.png" platform="android" qualifier="port-xhdpi"/>
-  <splash src="www/res/screen/blackberry/screen-225.png" platform="blackberry"/>
-  <splash platform="ios" src="www/res/screen/ios/Default.png" width="320" height="480" />
-    <splash platform="ios" src="www/res/screen/ios/Default_2x.png" width="640" height="960" />
-    <splash platform="ios" src="www/res/screen/ios/Default-568h_2x.png" width="640" height="1136" />
-    <splash platform="ios" src="www/res/screen/ios/Default-667h_2x.png" width="750" height="1334" />
-    <splash platform="ios" src="www/res/screen/ios/Default-Portrait-736h_3x.png" width="1242" height="2208" />
-    <splash platform="ios" src="www/res/screen/ios/Default-Portrait.png" width="768" height="1024" />
-    <splash platform="ios" src="www/res/screen/ios/Default-Portrait_2x.png" width="1536" height="2048" />
-  <splash src="www/res/screen/windows-phone/screen-portrait.jpg" platform="winphone"/>
+  <platform name="android">
+      <splash src="www/res/screen/android/screen-ldpi-portrait.png" density="ldpi"/>
+      <splash src="www/res/screen/android/screen-mdpi-portrait.png" density="mdpi"/>
+      <splash src="www/res/screen/android/screen-hdpi-portrait.png" density="hdpi"/>
+      <splash src="www/res/screen/android/screen-xhdpi-portrait.png" density="xhdpi"/>
+    </platform>
+    <platform name="ios">
+        <splash src="res/screen/ios/Default.png" width="320" height="480" />
+        <splash src="res/screen/ios/Default_2x.png" width="640" height="960" />
+        <splash src="res/screen/ios/Default-568h_2x.png" width="640" height="1136" />
+        <splash src="res/screen/ios/Default-667h_2x.png" width="750" height="1334" />
+        <splash src="res/screen/ios/Default-Portrait-736h_3x.png" width="1242" height="2208" />
+        <splash src="res/screen/ios/Default-Portrait.png" width="768" height="1024" />
+        <splash src="res/screen/ios/Default-Portrait_2x.png" width="1536" height="2048" />
+    </platform>
   <access origin="*"/>
   <plugin name="cordova-plugin-whitelist" version="1"/>
   <allow-intent href="http://*/*"/>
