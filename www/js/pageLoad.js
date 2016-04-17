@@ -1,5 +1,5 @@
 var categories = "",
-    url = 'http://widget.websta.me/rss/tag/belugawhale',
+    url = 'http://widget.websta.me/rss/tag/conceptforge',
     storage = window.localStorage,
     tour = "",
     lists = {
@@ -33,7 +33,7 @@ var categories = "",
     
     "Organizations": ["Company", "Organization", "Incorporated", "Systems", "Conglomerate", "International", "Consolidated", "Logistics", "Charity", "Business", "LLC", "Division"],
         
-    "Personality": ["Able", "Abnormal", "Absent-Minded", "Above Average", "Adventurous", "Affectionate", "Agile", "Agreeable", "Alert", "Amazing", "Ambitious", "Amiable", "Amusing", "Analytical", "Angelic", "Apathetic", "Apprehensive", "Ardent", "Artificial", "Artistic", "Assertive", "Attentive", "Average", "Awesome", "Awful", "Balanced", "Beautiful", "Below Average", "Beneficent", "Blue", "Blunt", "Boisterous", "Brave", "Bright", "Brilliant", "Buff", "Callous", "Candid", "Cantankerous", "Capable", "Careful", "Careless", "Caustic", "Cautious", "Charming", "Childish", "Childlike", "Cheerful", "Chic", "Churlish", "Circumspect", "Civil", "Clean", "Clever", "Clumsy", "Coherent", "Cold", "Competent", "Composed", "Conceited", "Condescending", "Confident", "Confused", "Conscientious", "Considerate", "Content", "Cool", "Cool-Headed", "Cooperative", "Cordial", "Courageous", "Cowardly", "Crabby", "Crafty", "Cranky", "Crass", "Critical", "Cruel", "Curious", "Cynical", "Dainty", "Decisive", "Deep", "Deferential", "Deft", "Delicate", "Demonic", "Dependent", "Delightful", "Demure", "Depressed", "Devoted", "Dextrous", "Diligent", "Direct", "Dirty", "Disagreeable", "Discerning", "Discreet", "Disruptive", "Distant", "Distraught", "Distrustful", "Dowdy", "Dramatic", "Dreary", "Drowsy", "Drugged", "Drunk", "Dull", "Dutiful", "Eager", "Earnest", "Easy-Going", "Efficient", "Egotistical", "Elfin", "Emotional", "Energetic", "Enterprising", "Enthusiastic", "Evasive", "Even-Tempered", "Exacting", "Excellent", "Excitable", "Experienced", "Fabulous", "Fastidious", "Ferocious", "Fervent", "Fiery", "Flabby", "Flaky", "Flashy", "Frank", "Friendly", "Funny", "Fussy", "Generous", "Gentle", "Gloomy", "Glutinous", "Good", "Grave", "Great", "Groggy", "Grouchy", "Guarded", "Hateful", "Hearty", "Helpful", "Hesitant", "Hot-Headed", "Hypercritical", "Hysterical", "Idiotic", "Idle", "Illogical", "Imaginative", "Immature", "Immodest", "Impatient", "Imperturbable", "Impetuous", "Impractical", "Impressionable", "Impressive", "Impulsive", "Inactive", "Incisive", "Incompetent", "Inconsiderate", "Inconsistent", "Independent", "Indiscreet", "Indolent", "Indefatigable", "Industrious", "Inexperienced", "Insensitive", "Inspiring", "Intelligent", "Interesting", "Intolerant", "Inventive", "Irascible", "Irritable", "Irritating", "Jocular", "Jovial", "Joyous", "Judgmental", "Keen", "Kind", "Lame", "Lazy", "Lean", "Leery", "Lethargic", "Level-Headed", "Listless", "Lithe", "Lively", "Local", "Logical", "Long-Winded", "Lovable", "Love-Lorn", "Lovely", "Maternal", "Mature", "Mean", "Meddlesome", "Mercurial", "Methodical", "Meticulous", "Mild", "Miserable", "Modest", "Moronic", "Morose", "Motivated", "Musical", "Naive", "Nasty", "Natural", "Naughty", "Negative", "Nervous", "Noisy", "Normal", "Nosy", "Numb", "Obliging", "Obnoxious", "Old-Fashioned", "One-Sided", "Orderly", "Ostentatious", "Outgoing", "Outspoken", "Passionate", "Passive", "Paternal", "Paternalistic", "Patient", "Peaceful", "Peevish", "Pensive", "Persevering", "Persnickety", "Petulant", "Picky", "Plain", "Plain-Speaking", "Playful", "Pleasant", "Plucky", "Polite", "Popular", "Positive", "Powerful", "Practical", "Prejudiced", "Pretty", "Proficient", "Proud", "Provocative", "Prudent", "Punctual", "Quarrelsome", "Querulous", "Quick", "Quick-Tempered", "Quiet", "Realistic", "Reassuring", "Reclusive", "Reliable", "Reluctant", "Resentful", "Reserved", "Resigned", "Resourceful", "Respected", "Respectful", "Responsible", "Restless", "Revered", "Ridiculous", "Sad", "Sassy", "Saucy", "Sedate", "Self-Assured", "Selfish", "Sensible", "Sensitive", "Sentimental", "Serene", "Serious", "Sharp", "Short-Tempered", "Shrewd", "Shy", "Silly", "Sincere", "Sleepy", "Slight", "Sloppy", "Slothful", "Slovenly", "Slow", "Smart", "Snazzy", "Sneering", "Snobby", "Somber", "Sober", "Sophisticated", "Soulful", "Soulless", "Sour", "Spirited", "Spiteful", "Stable", "Staid", "Steady", "Stern", "Stoic", "Striking", "Strong", "Stupid", "Sturdy", "Subtle", "Sullen", "Sulky", "Supercilious", "Superficial", "Surly", "Suspicious", "Sweet", "Tactful", "Tactless", "Talented", "Testy", "Thinking", "Thoughtful", "Thoughtless", "Timid", "Tired", "Tolerant", "Touchy", "Tranquil", "Ugly", "Unaffected", "Unbalanced", "Uncertain", "Uncooperative", "Undependable", "Unemotional", "Unfriendly", "Unguarded", "Unhelpful", "Unimaginative", "Unmotivated", "Unpleasant", "Unpopular", "Unreliable", "Unsophisticated", "Unstable", "Unsure", "Unthinking", "Unwilling", "Venal", "Versatile", "Vigilant", "Warm", "Warmhearted", "Wary", "Watchful", "Weak", "Well-Behaved", "Well-Developed", "Well-Intentioned", "Well-Respected", "Well-Rounded", "Willing", "Wonderful", "Volcanic", "Vulnerable", "Zealous"],
+    "Personalities": ["Able", "Abnormal", "Absent-Minded", "Above Average", "Adventurous", "Affectionate", "Agile", "Agreeable", "Alert", "Amazing", "Ambitious", "Amiable", "Amusing", "Analytical", "Angelic", "Apathetic", "Apprehensive", "Ardent", "Artificial", "Artistic", "Assertive", "Attentive", "Average", "Awesome", "Awful", "Balanced", "Beautiful", "Below Average", "Beneficent", "Blue", "Blunt", "Boisterous", "Brave", "Bright", "Brilliant", "Buff", "Callous", "Candid", "Cantankerous", "Capable", "Careful", "Careless", "Caustic", "Cautious", "Charming", "Childish", "Childlike", "Cheerful", "Chic", "Churlish", "Circumspect", "Civil", "Clean", "Clever", "Clumsy", "Coherent", "Cold", "Competent", "Composed", "Conceited", "Condescending", "Confident", "Confused", "Conscientious", "Considerate", "Content", "Cool", "Cool-Headed", "Cooperative", "Cordial", "Courageous", "Cowardly", "Crabby", "Crafty", "Cranky", "Crass", "Critical", "Cruel", "Curious", "Cynical", "Dainty", "Decisive", "Deep", "Deferential", "Deft", "Delicate", "Demonic", "Dependent", "Delightful", "Demure", "Depressed", "Devoted", "Dextrous", "Diligent", "Direct", "Dirty", "Disagreeable", "Discerning", "Discreet", "Disruptive", "Distant", "Distraught", "Distrustful", "Dowdy", "Dramatic", "Dreary", "Drowsy", "Drugged", "Drunk", "Dull", "Dutiful", "Eager", "Earnest", "Easy-Going", "Efficient", "Egotistical", "Elfin", "Emotional", "Energetic", "Enterprising", "Enthusiastic", "Evasive", "Even-Tempered", "Exacting", "Excellent", "Excitable", "Experienced", "Fabulous", "Fastidious", "Ferocious", "Fervent", "Fiery", "Flabby", "Flaky", "Flashy", "Frank", "Friendly", "Funny", "Fussy", "Generous", "Gentle", "Gloomy", "Glutinous", "Good", "Grave", "Great", "Groggy", "Grouchy", "Guarded", "Hateful", "Hearty", "Helpful", "Hesitant", "Hot-Headed", "Hypercritical", "Hysterical", "Idiotic", "Idle", "Illogical", "Imaginative", "Immature", "Immodest", "Impatient", "Imperturbable", "Impetuous", "Impractical", "Impressionable", "Impressive", "Impulsive", "Inactive", "Incisive", "Incompetent", "Inconsiderate", "Inconsistent", "Independent", "Indiscreet", "Indolent", "Indefatigable", "Industrious", "Inexperienced", "Insensitive", "Inspiring", "Intelligent", "Interesting", "Intolerant", "Inventive", "Irascible", "Irritable", "Irritating", "Jocular", "Jovial", "Joyous", "Judgmental", "Keen", "Kind", "Lame", "Lazy", "Lean", "Leery", "Lethargic", "Level-Headed", "Listless", "Lithe", "Lively", "Local", "Logical", "Long-Winded", "Lovable", "Love-Lorn", "Lovely", "Maternal", "Mature", "Mean", "Meddlesome", "Mercurial", "Methodical", "Meticulous", "Mild", "Miserable", "Modest", "Moronic", "Morose", "Motivated", "Musical", "Naive", "Nasty", "Natural", "Naughty", "Negative", "Nervous", "Noisy", "Normal", "Nosy", "Numb", "Obliging", "Obnoxious", "Old-Fashioned", "One-Sided", "Orderly", "Ostentatious", "Outgoing", "Outspoken", "Passionate", "Passive", "Paternal", "Paternalistic", "Patient", "Peaceful", "Peevish", "Pensive", "Persevering", "Persnickety", "Petulant", "Picky", "Plain", "Plain-Speaking", "Playful", "Pleasant", "Plucky", "Polite", "Popular", "Positive", "Powerful", "Practical", "Prejudiced", "Pretty", "Proficient", "Proud", "Provocative", "Prudent", "Punctual", "Quarrelsome", "Querulous", "Quick", "Quick-Tempered", "Quiet", "Realistic", "Reassuring", "Reclusive", "Reliable", "Reluctant", "Resentful", "Reserved", "Resigned", "Resourceful", "Respected", "Respectful", "Responsible", "Restless", "Revered", "Ridiculous", "Sad", "Sassy", "Saucy", "Sedate", "Self-Assured", "Selfish", "Sensible", "Sensitive", "Sentimental", "Serene", "Serious", "Sharp", "Short-Tempered", "Shrewd", "Shy", "Silly", "Sincere", "Sleepy", "Slight", "Sloppy", "Slothful", "Slovenly", "Slow", "Smart", "Snazzy", "Sneering", "Snobby", "Somber", "Sober", "Sophisticated", "Soulful", "Soulless", "Sour", "Spirited", "Spiteful", "Stable", "Staid", "Steady", "Stern", "Stoic", "Striking", "Strong", "Stupid", "Sturdy", "Subtle", "Sullen", "Sulky", "Supercilious", "Superficial", "Surly", "Suspicious", "Sweet", "Tactful", "Tactless", "Talented", "Testy", "Thinking", "Thoughtful", "Thoughtless", "Timid", "Tired", "Tolerant", "Touchy", "Tranquil", "Ugly", "Unaffected", "Unbalanced", "Uncertain", "Uncooperative", "Undependable", "Unemotional", "Unfriendly", "Unguarded", "Unhelpful", "Unimaginative", "Unmotivated", "Unpleasant", "Unpopular", "Unreliable", "Unsophisticated", "Unstable", "Unsure", "Unthinking", "Unwilling", "Venal", "Versatile", "Vigilant", "Warm", "Warmhearted", "Wary", "Watchful", "Weak", "Well-Behaved", "Well-Developed", "Well-Intentioned", "Well-Respected", "Well-Rounded", "Willing", "Wonderful", "Volcanic", "Vulnerable", "Zealous"],
 
     "Size": ["Thin", "Fat", "Average", "Enormous", "Skinny", "Muscular", "Frail", "Lean", "Thick"]
 };
@@ -81,11 +81,11 @@ function loadInsta(feed) {
     $(".hiddenInstagramFeed").find("img").each(function(){
         if($(this).height() == "306")
         {
-            $(".instagramFeed").append('<div class="img" data-comment="'+$(this).parent().parent().next().find("strong").html()+'" data-url="'+$(this).attr("src")+'" style="background: url('+$(this).attr("src")+') no-repeat; background-size:cover; background-position: center center; width: 50%; height: '+$(window).width() / 2+'px"></div>');
+            $(".instagramFeed").append('<div class="img" data-author-img="'+$(this).parent().parent().prev().find("img").attr("src")+'" data-author-name="'+$(this).parent().parent().prev().find("a:eq(1)").html()+'" data-comment="'+$(this).parent().parent().next().find("strong").html()+'" data-url="'+$(this).attr("src")+'" style="background: url('+$(this).attr("src")+') no-repeat; background-size:cover; background-position: center center; width: 50%; height: '+$(window).width() / 2+'px"></div>');
         }
     });
     $(".instagramFeed").find(".img").on("click", function(){
-        $("body").append("<div class='backdrop'><div class='fullheight'></div><div class='imageContainer'><img src='"+$(this).attr("data-url")+"'/><i class='fa fa-times'></i><p>"+$(this).attr("data-comment")+"</p></div></div>");
+        $("body").append("<div class='backdrop'><div class='fullheight'></div><div class='imageContainer'><p class='instaProfile'><img class='instaProfileImg' src='"+$(this).attr("data-author-img")+"' /><span class='instaProfileName'>"+$(this).attr("data-author-name")+"</span></p><img src='"+$(this).attr("data-url")+"'/><i class='cf-Close'></i><p>"+$(this).attr("data-comment")+"</p></div></div>");
         $(".backdrop").on("click", function() {
             $(this).remove();
         });
@@ -113,18 +113,20 @@ $( document ).on( "pagecontainerchange", function() {
     // For example, on first page: <div data-role="page" data-title="Info">
     var current = $( ".ui-page-active" ).jqmData( "title" );
     $(".pageLink").show();
+    $(".ui-title").show();
     if(current == "Gallery")
     {
-        $(".pageLink").html("<i class='fa fa-home'></i>").attr("href", "#home");
+        $(".pageLink").html("<i class='cf-Home'></i>").attr("href", "#home");
         ga('send', 'pageview', {'page': 'gallery'});
     }
     else if(current == "Home")
     {
-        $(".pageLink").html("<i class='fa fa-th-large'></i>").attr("href", "#gallery");
+        $(".pageLink").html("<i class='cf-Gallery'></i>").attr("href", "#gallery");
         ga('send', 'pageview', {'page': 'home'});
     }
     else
     {
+        $(".ui-title").hide();
         $(".pageLink").hide();
         ga('send', 'pageview', {'page': 'results'});
     }
@@ -137,7 +139,7 @@ $(document).ready(function(){
         ga('send', 'event', "randomize", $(this).attr("data-buttonName"), allCategories.length);
        allCategories.each(function(index){
            var list = lists[$(this).attr("data-category")];
-           $(".results").append("<div class='category'><i class='fa "+$(this).attr("data-category")+"'></i><p>"+list[Math.floor(Math.random()*list.length)]+"</p></div>");
+           $(".results").append("<div class='category'><i class='cf-"+$(this).attr("data-category")+"'></i><p>"+list[Math.floor(Math.random()*list.length)]+"</p></div>");
        });
         $.mobile.changePage( "#result", { transition: "slide", changeHash: true });
     });
@@ -145,7 +147,7 @@ $(document).ready(function(){
     var count = 1,
         slide = "<div class='categorySlide'>";
     $.each(lists, function(key, value) {
-        slide += "<div class='category' data-category='"+key+"'><i class='fa "+key+"'></i><p>"+key+"</p></div>";
+        slide += "<div class='category' data-category='"+key+"'><i class='cf-"+key+"'></i><p>"+key+"</p></div>";
         if(count == 9)
         {
             slide += "</div>";
@@ -186,10 +188,10 @@ $(document).ready(function(){
             "fast");
             
         }).find("i").animate({
-            "padding": "14px 12px",
-            "font-size": "20pt",
-            "width": "35px",
-            "height": "31px"
+            "padding": "3px 2px;",
+            "font-size": "40pt",
+            "width": "61px",
+            "height": "56px"
         }, "fast").parent().nodoubletapzoom();
         $(".randomizer").animate({
             "scrollLeft": $(".randomizer").find(".category").width() * $(".randomizer").find(".category").length
@@ -224,10 +226,10 @@ $(document).ready(function(){
     // Instance the tour
     tour = new Tour({
       backdrop: true,
-      template: "<div class='popover tour'><div class='arrow'></div><h3 class='popover-title'></h3><div class='popover-content'></div><div class='popover-navigation'><button class='btn btn-default' data-role='prev'><i class='fa fa-arrow-left'></i></button><button class='btn btn-default' data-role='next'><i class='fa fa-arrow-right'></i></button><button class='btn btn-default' data-role='end'><i class='fa fa-times'></i></button></div></div>",
+      template: "<div class='popover tour'><div class='arrow'></div><h3 class='popover-title'></h3><div class='popover-content'></div><div class='popover-navigation'><button class='btn btn-default' data-role='prev'><i class='cf-Back'></i></button><button class='btn btn-default' data-role='next'><i class='cf-Forward'></i></button><button class='btn btn-default' data-role='end'><i class='cf-Close'></i></button></div></div>",
       steps: [
           {
-            element: ".categories .category:eq(0)",
+            element: ".categories .category:eq(0) i",
             title: "Add a Category",
             content: "Tap to add a category from the list. You can add as many categories as you want, and you can also add the same category multiple times There are multiple list pages to scroll through.",
             placement: "bottom",
@@ -239,11 +241,12 @@ $(document).ready(function(){
             }
           },
           {
-            element: ".randomizer .category:eq(0)",
+            element: ".randomizer .category:eq(0) i",
             title: "Remove a Category",
             content: "Double tap to remove a category you have selected from the list.",
             placement: "top",
             reflex: true,
+            orphan: true,
             onNext: function (tour) {
                 ga('send', 'event', "advanceTour", this.id);
             }
@@ -262,7 +265,7 @@ $(document).ready(function(){
           {
             element: ".results",
             title: "View Your Concept",
-            content: "Concept Forge will create a list to inspire your new concept. Screenshot the results to save or share it.",
+            content: "Concept Forge will create a list to inspire your new concept. Screenshot the results to save or share them.",
             placement: "bottom",
             reflex: true,
             onNext: function(tour) {
@@ -278,6 +281,9 @@ $(document).ready(function(){
             content: "Click the Refresh button to generate a new concept from the same categories.",
             placement: "top",
             reflex: true,
+            onShown: function() {
+                $(".tour-step-background").css("border-radius", "100px")
+            },
             onNext: function(tour) {
                 ga('send', 'event', "advanceTour", this.id);
             }

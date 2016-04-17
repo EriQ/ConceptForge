@@ -5,6 +5,7 @@
 }
 .ui-header-fixed {
     padding-top: 10px;
+    padding-bottom: 10px;
 }
 h2 {
     margin: -10px 0px 20px 0px;
@@ -31,7 +32,8 @@ h3 {
     overflow:hidden;
 }
 .randomizer.outerBox {
-    height: 61px;
+    height: 63px;
+    overflow-y:hidden;
     margin-bottom: 15px;
     white-space: nowrap;
     padding: 3.5% 0% 3% 0%;
@@ -54,16 +56,6 @@ h3 {
     text-shadow: none;
     text-align: center;
 }
-.categories .category:after {
-    content: "+";
-    margin-top: -97px;
-    line-height: 89px;
-    height: 97px;
-    display: block;
-    font-size: 0pt;
-    color: #fff;
-    transition: .5s;
-}
 .randomizer .category {
     margin: 0px;
 }
@@ -78,12 +70,17 @@ h3 {
 }
 .category i {
     background: #e7b157;
-    padding: 14px 12px;
-    font-size: 20pt;
-    width: 35px;
-    height: 31px;
+    padding: 2px 6px;
+    font-size: 40pt;
     border-radius: 5px;
     color: #212732;
+    line-height: 40pt;
+}
+.results .category i {
+    line-height: 47pt;
+}
+[class^="cf-"]:before, [class*=" cf-"]:before {
+    vertical-align: middle;
 }
 .randomizer .category i {
     font-size: 0px;
@@ -92,7 +89,7 @@ h3 {
     height: 0px;
 }
 .category p {
-    margin: 2px 0px;
+    margin: 6px 0px;
 }
 .randomizer .category p {
     display: none;
@@ -122,20 +119,21 @@ button.randomize.ui-btn.ui-shadow.ui-corner-all:hover {
     height: 37px;
     border: 1.5px solid #e7b157;
     padding: 11.5px 0px;
-    font-size: 23pt;
-    line-height: 28pt;
+    font-size: 34pt;
+    line-height: 18pt;
     border-radius: 100px;
     color: #e7b157 !important;
     text-shadow: none;
     margin: 0px 10px;
+    text-decoration: none;
 }
 .resultLink:hover {
     color: #212732 !important;
     background: #e7b157;
 }
-.rerunLink:hover i {
-    -webkit-animation: spin .5s linear;
-    animation: spin .5s linear;
+.rerunLink:hover {
+    -webkit-animation: spin .75s linear;
+    animation: spin .75s linear;
 }
 .hiddenInstagramFeed {
     display: none;
@@ -162,10 +160,24 @@ button.randomize.ui-btn.ui-shadow.ui-corner-all:hover {
     display: inline-block;
     vertical-align: middle;
     position: relative;
+    border: 1px solid #e7b157;
+    border-radius: 10px;
+    overflow: hidden;
+    background:#212732;
 }
 .backdrop .imageContainer img {
     max-width:100%;
     width: 100%;
+}
+.backdrop .imageContainer img.instaProfileImg {
+    width: 30px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+.backdrop .imageContainer .instaProfile {
+    text-align: left;
+    margin: 5px 10px;
+    font-weight: bold;
 }
 .fullheight {
     display: inline-block;
@@ -176,10 +188,10 @@ button.randomize.ui-btn.ui-shadow.ui-corner-all:hover {
 .backdrop i {
     display: block;
     text-align: right;
-    color: #FFF;
+    color: #e7b157;
     font-size: 20pt;
     position: absolute;
-    top: 10px;
+    top: 2px;
     right: 10px;
 }
 .backdrop p {
@@ -209,7 +221,8 @@ button.btn.btn-default {
     background: transparent;
     border: none;
     color: #e7b157;
-    font-size: 15pt;
+    font-size: 25pt;
+    line-height: 10pt;
 }
 .btn.disabled {
     opacity: .3;
@@ -220,6 +233,7 @@ button.btn.btn-default {
     text-shadow: none !important;
     border: none;
     font-weight: bold !important;
+    height: 40px;
 }
 a.ui-link.ui-btn.ui-shadow.ui-corner-all {
     padding: 0px;
@@ -232,6 +246,11 @@ a.ui-link.ui-btn.ui-shadow.ui-corner-all {
     line-height: 22pt;
     border-radius: 0px;
     position: relative;
+}
+.ui-header img.ui-btn-left {
+    width: 35px;
+    margin-top: 16px;
+    margin-left: 10px;
 }
 a.startTour {
     text-align: right;
@@ -266,8 +285,8 @@ a.startTour:hover {
     transform: rotate(0deg);
   }
   100% {
-    -webkit-transform: rotate(179deg);
-    transform: rotate(179deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
   }
 }
 @keyframes spin {
@@ -276,7 +295,7 @@ a.startTour:hover {
     transform: rotate(0deg);
   }
   100% {
-    -webkit-transform: rotate(179deg);
-    transform: rotate(179deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
   }
 }
