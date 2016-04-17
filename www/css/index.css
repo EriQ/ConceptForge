@@ -131,9 +131,9 @@ button.randomize.ui-btn.ui-shadow.ui-corner-all:hover {
     color: #212732 !important;
     background: #e7b157;
 }
-.rerunLink:hover i {
-    -webkit-animation: spin .5s linear;
-    animation: spin .5s linear;
+.rerunLink:focus {
+    -webkit-animation: spin .75s linear;
+    animation: spin .75s linear;
 }
 .hiddenInstagramFeed {
     display: none;
@@ -285,8 +285,8 @@ a.startTour:hover {
     transform: rotate(0deg);
   }
   100% {
-    -webkit-transform: rotate(179deg);
-    transform: rotate(179deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
   }
 }
 @keyframes spin {
@@ -295,7 +295,7 @@ a.startTour:hover {
     transform: rotate(0deg);
   }
   100% {
-    -webkit-transform: rotate(179deg);
-    transform: rotate(179deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
   }
 }
