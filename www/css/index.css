@@ -131,7 +131,7 @@ button.randomize.ui-btn.ui-shadow.ui-corner-all:hover {
     color: #212732 !important;
     background: #e7b157;
 }
-.rerunLink:focus {
+.rerunLink:hover {
     -webkit-animation: spin .75s linear;
     animation: spin .75s linear;
 }
