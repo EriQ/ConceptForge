@@ -137,7 +137,7 @@ $(document).ready(function(){
         ga('send', 'event', "randomize", $(this).attr("data-buttonName"), allCategories.length);
        allCategories.each(function(index){
            var list = lists[$(this).attr("data-category")];
-           $(".results").append("<div class='category'><i class='fa "+$(this).attr("data-category")+"'></i><p>"+list[Math.floor(Math.random()*list.length)]+"</p></div>");
+           $(".results").append("<div class='category'><i class='cf-"+$(this).attr("data-category")+"'></i><p>"+list[Math.floor(Math.random()*list.length)]+"</p></div>");
        });
         $.mobile.changePage( "#result", { transition: "slide", changeHash: true });
     });
