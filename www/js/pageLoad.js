@@ -1,5 +1,5 @@
 var categories = "",
-    url = 'http://widget.websta.me/rss/tag/belugawhale',
+    url = 'http://widget.websta.me/rss/tag/conceptforge',
     storage = window.localStorage,
     tour = "",
     lists = {
@@ -81,11 +81,11 @@ function loadInsta(feed) {
     $(".hiddenInstagramFeed").find("img").each(function(){
         if($(this).height() == "306")
         {
-            $(".instagramFeed").append('<div class="img" data-comment="'+$(this).parent().parent().next().find("strong").html()+'" data-url="'+$(this).attr("src")+'" style="background: url('+$(this).attr("src")+') no-repeat; background-size:cover; background-position: center center; width: 50%; height: '+$(window).width() / 2+'px"></div>');
+            $(".instagramFeed").append('<div class="img" data-author-img="'+$(this).parent().parent().prev().find("img").attr("src")+'" data-author-name="'+$(this).parent().parent().prev().find("a:eq(1)").html()+'" data-comment="'+$(this).parent().parent().next().find("strong").html()+'" data-url="'+$(this).attr("src")+'" style="background: url('+$(this).attr("src")+') no-repeat; background-size:cover; background-position: center center; width: 50%; height: '+$(window).width() / 2+'px"></div>');
         }
     });
     $(".instagramFeed").find(".img").on("click", function(){
-        $("body").append("<div class='backdrop'><div class='fullheight'></div><div class='imageContainer'><img src='"+$(this).attr("data-url")+"'/><i class='fa fa-times'></i><p>"+$(this).attr("data-comment")+"</p></div></div>");
+        $("body").append("<div class='backdrop'><div class='fullheight'></div><div class='imageContainer'><p class='instaProfile'><img class='instaProfileImg' src='"+$(this).attr("data-author-img")+"' /><span class='instaProfileName'>"+$(this).attr("data-author-name")+"</span></p><img src='"+$(this).attr("data-url")+"'/><i class='cf-Close'></i><p>"+$(this).attr("data-comment")+"</p></div></div>");
         $(".backdrop").on("click", function() {
             $(this).remove();
         });
@@ -113,6 +113,7 @@ $( document ).on( "pagecontainerchange", function() {
     // For example, on first page: <div data-role="page" data-title="Info">
     var current = $( ".ui-page-active" ).jqmData( "title" );
     $(".pageLink").show();
+    $(".ui-title").show();
     if(current == "Gallery")
     {
         $(".pageLink").html("<i class='cf-Home'></i>").attr("href", "#home");
@@ -125,6 +126,7 @@ $( document ).on( "pagecontainerchange", function() {
     }
     else
     {
+        $(".ui-title").hide();
         $(".pageLink").hide();
         ga('send', 'pageview', {'page': 'results'});
     }
@@ -224,10 +226,10 @@ $(document).ready(function(){
     // Instance the tour
     tour = new Tour({
       backdrop: true,
-      template: "<div class='popover tour'><div class='arrow'></div><h3 class='popover-title'></h3><div class='popover-content'></div><div class='popover-navigation'><button class='btn btn-default' data-role='prev'><i class='fa fa-arrow-left'></i></button><button class='btn btn-default' data-role='next'><i class='fa fa-arrow-right'></i></button><button class='btn btn-default' data-role='end'><i class='fa fa-times'></i></button></div></div>",
+      template: "<div class='popover tour'><div class='arrow'></div><h3 class='popover-title'></h3><div class='popover-content'></div><div class='popover-navigation'><button class='btn btn-default' data-role='prev'><i class='cf-Back'></i></button><button class='btn btn-default' data-role='next'><i class='cf-Forward'></i></button><button class='btn btn-default' data-role='end'><i class='cf-Close'></i></button></div></div>",
       steps: [
           {
-            element: ".categories .category:eq(0)",
+            element: ".categories .category:eq(0) i",
             title: "Add a Category",
             content: "Tap to add a category from the list. You can add as many categories as you want, and you can also add the same category multiple times There are multiple list pages to scroll through.",
             placement: "bottom",
@@ -239,11 +241,12 @@ $(document).ready(function(){
             }
           },
           {
-            element: ".randomizer .category:eq(0)",
+            element: ".randomizer .category:eq(0) i",
             title: "Remove a Category",
             content: "Double tap to remove a category you have selected from the list.",
             placement: "top",
             reflex: true,
+            orphan: true,
             onNext: function (tour) {
                 ga('send', 'event', "advanceTour", this.id);
             }
@@ -278,6 +281,9 @@ $(document).ready(function(){
             content: "Click the Refresh button to generate a new concept from the same categories.",
             placement: "top",
             reflex: true,
+            onShown: function() {
+                $(".tour-step-background").css("border-radius", "100px")
+            },
             onNext: function(tour) {
                 ga('send', 'event', "advanceTour", this.id);
             }

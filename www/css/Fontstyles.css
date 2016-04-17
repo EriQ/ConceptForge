@@ -104,3 +104,15 @@
 .cf-Home:before {
   content: "\e00f";
 }
+.cf-Back:before {
+  content: "\e016";
+}
+.cf-Forward:before {
+  content: "\e017";
+}
+.cf-Close:before {
+  content: "\e018";
+}
+.cf-Refresh:before {
+  content: "\e019";
+}

@@ -14,15 +14,12 @@
 <link rel="apple-touch-icon" sizes="120x120" href="static/touch-icon-iphone-retina-120x120.png">
 <link rel="apple-touch-icon" sizes="152x152" href="static/touch-icon-ipad-retina-152x152.png">-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="jqm/jquery.mobile.icons-1.4.5.min.css" />
 <link rel="stylesheet" href="jqm/jquery.mobile.structure-1.4.5.min.css" />
-
 <link rel="stylesheet" href="jqm/jquery.mobile.theme-1.4.5.min.css" />
 <link rel="stylesheet" href="css/Fontstyles.css">
 <link href="css/bootstrap-tour-standalone.min.css" rel="stylesheet">
 <link href="css/index.css" rel="stylesheet">
-<link href="css/icons.css" rel="stylesheet">
-<!--<script src="cordova.js"></script>-->
+<script src="cordova.js"></script>
 <script src="js/jquery-2.1.4.min.js"></script>
 <script>
     
@@ -43,6 +40,7 @@ $(document).bind('mobileinit',function(){
 </head>
 <body>
 <div data-role="header" data-position="fixed" data-tap-toggle="false" data-id="header" data-theme="a">
+    <img class="ui-btn-left" src="img/logo.png" alt="" />
     <a class="pageLink ui-btn-right" href="#gallery"><i class="cf-Gallery"></i></a>
     <h1>Concept Forge</h1>
 </div>
@@ -73,8 +71,8 @@ $(document).bind('mobileinit',function(){
         <div class="results outerBox"></div>
         <h3>Happy Creating!</h3>
         <div class="buttons">
-            <a class="backLink resultLink" href="#home" data-transition="slide" data-direction="reverse"><i class="fa fa-arrow-left"></i></a>
-            <a class="rerunLink resultLink" data-buttonName="Rerun"><i class="fa fa-refresh"></i></a>
+            <a class="backLink resultLink" href="#home" data-transition="slide" data-direction="reverse"><i class="cf-Back"></i></a>
+            <a class="rerunLink resultLink" data-buttonName="Rerun"><i class="cf-Refresh"></i></a>
         </div>
     </div>
     
