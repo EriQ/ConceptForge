@@ -265,7 +265,7 @@ $(document).ready(function(){
           {
             element: ".results",
             title: "View Your Concept",
-            content: "Concept Forge will create a list to inspire your new concept. Screenshot the results to save or share it.",
+            content: "Concept Forge will create a list to inspire your new concept. Screenshot the results to save or share them.",
             placement: "bottom",
             reflex: true,
             onNext: function(tour) {
