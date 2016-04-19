@@ -143,7 +143,9 @@ $(document).ready(function(){
        });
         $.mobile.changePage( "#result", { transition: "slide", changeHash: true });
     });
-    
+    $("img.ui-btn-left").on("click", function() {
+        $.mobile.changePage( "#home", { transition: "fade", changeHash: true });
+    })
     var count = 1,
         slide = "<div class='categorySlide'>";
     $.each(lists, function(key, value) {
