@@ -105,7 +105,7 @@ button.ui-btn.ui-shadow.ui-corner-all {
     font-size: 15pt;
     transition: .125s;
 }
-button.randomize.ui-btn.ui-shadow.ui-corner-all:hover {
+button.ui-btn.ui-shadow.ui-corner-all:hover {
     border: 1.5px solid #e7b157;
     background: transparent;
     color: #e7b157;
