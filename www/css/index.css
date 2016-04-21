@@ -103,10 +103,13 @@ button.ui-btn.ui-shadow.ui-corner-all {
     color: #212732;
     text-shadow: none;
     font-size: 15pt;
-    transition: .125s;
+    border: 1px solid #e7b157;
+    transition: all 0s ease .5s;
 }
 button.ui-btn.ui-shadow.ui-corner-all:hover {
-    border: 1.5px solid #e7b157;
+    animation: buttonHover .5s linear;
+    -webkit-animation-iteration-count: 1; /* Chrome, Safari, Opera */
+    animation-iteration-count: 1;
     background: transparent;
     color: #e7b157;
 }
@@ -129,7 +132,7 @@ button.ui-btn.ui-shadow.ui-corner-all:hover {
 }
 .resultLink:hover {
     color: #212732 !important;
-    background: #e7b157;
+    background: #A9BDC9;
 }
 .rerunLink:hover {
     -webkit-animation: spin .75s linear;
@@ -247,6 +250,9 @@ a.ui-link.ui-btn.ui-shadow.ui-corner-all {
     border-radius: 0px;
     position: relative;
 }
+a.ui-link.ui-btn.ui-shadow.ui-corner-all:hover {
+    color: #A9BDC9;
+}
 .ui-header img.ui-btn-left {
     width: 35px;
     margin-top: 16px;
@@ -297,5 +303,36 @@ a.startTour:hover {
   100% {
     -webkit-transform: rotate(359deg);
     transform: rotate(359deg);
+  }
+}
+
+@-webkit-keyframes buttonHover {
+  0% {
+    background: #e7b157;
+    color: #212732;
+  }
+  50% {
+    border: 1.5px solid #A9BDC9;
+    background: #A9BDC9;
+  }
+  100% {
+    background: transparent;
+    color: #e7b157;
+    border: 1px solid #e7b157;
+  }
+}
+@keyframes buttonHover {
+  0% {
+    background: #e7b157;
+    color: #212732;
+  }
+  50% {
+    border: 1.5px solid #A9BDC9;
+    background: #A9BDC9;
+  }
+  100% {
+    background: transparent;
+    color: #e7b157;
+    border: 1px solid #e7b157;
   }
 }
