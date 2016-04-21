@@ -130,7 +130,7 @@ button.ui-btn.ui-shadow.ui-corner-all:hover {
     margin: 0px 10px;
     text-decoration: none;
 }
-.resultLink:hover {
+.backLink:hover {
     color: #212732 !important;
     background: #A9BDC9;
 }
@@ -289,6 +289,8 @@ a.startTour:hover {
   0% {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
+    color: #212732 !important;
+    background: #A9BDC9;
   }
   100% {
     -webkit-transform: rotate(359deg);
@@ -299,6 +301,8 @@ a.startTour:hover {
   0% {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
+    color: #212732 !important;
+    background: #A9BDC9;
   }
   100% {
     -webkit-transform: rotate(359deg);
