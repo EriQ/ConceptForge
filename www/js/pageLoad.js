@@ -135,7 +135,12 @@ $( document ).on( "pagecontainerchange", function() {
 $(document).ready(function(){
     $("button.randomize, a.rerunLink").on("click", function() {
         $(".results").empty();
-        var allCategories = $(".randomizer").find(".category");
+        var allCategories = $(".randomizer").find(".category"),
+            that = this;
+        if($(that).hasClass("rerunLink"))
+        {
+            $(that).addClass("animating");
+        }
         ga('send', 'event', "randomize", $(this).attr("data-buttonName"), allCategories.length);
        allCategories.each(function(index){
            var list = lists[$(this).attr("data-category")],
@@ -148,11 +153,11 @@ $(document).ready(function(){
                else
                    randomInt--;
            }
-           console.log(randomInt, list.length);
            $(".results").append("<div class='category'><i class='cf-"+$(this).attr("data-category")+"'></i><p>"+list[randomInt]+"</p></div>");
            storage.setItem($(this).attr("data-category"), randomInt);
        });
         $.mobile.changePage( "#result", { transition: "slide", changeHash: true });
+        setTimeout(function() {$(that).removeClass("animating")}, 1000);
     });
     $("img.ui-btn-left").on("click", function() {
         $.mobile.changePage( "#home", { transition: "fade", changeHash: true });

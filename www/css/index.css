@@ -135,7 +135,7 @@ button.ui-btn.ui-shadow.ui-corner-all:hover {
     color: #212732 !important;
     background: #A9BDC9;
 }
-.rerunLink:hover {
+.rerunLink.animating {
     -webkit-animation: spin .75s linear;
     animation: spin .75s linear;
 }
