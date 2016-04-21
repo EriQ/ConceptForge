@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.ConceptForge.app" version="1.0.0">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.ConceptForge.app" version="1.1.0">
   <name>Concept Forge</name>
   <description>A fully designed functional list randomizing app tailored for creatives. The app will use algorythms to create randomly generated combinations of words. It will allow up to 5 word combinations for extended customization. Users can choose from pre-made lists or generate their own lists. The app is designed to help creatives stay sharp with their medium or practice of choice. It will be free to use.</description>
   <author href="http://erichigdon.com" email="Eric.S.Higdon@gmail.com">Eric Higdon</author>
