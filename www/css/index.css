@@ -55,6 +55,7 @@ h3 {
     font-size: 10pt;
     text-shadow: none;
     text-align: center;
+    text-transform:capitalize;
 }
 .randomizer .category {
     margin: 0px;
