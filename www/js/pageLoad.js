@@ -138,8 +138,19 @@ $(document).ready(function(){
         var allCategories = $(".randomizer").find(".category");
         ga('send', 'event', "randomize", $(this).attr("data-buttonName"), allCategories.length);
        allCategories.each(function(index){
-           var list = lists[$(this).attr("data-category")];
-           $(".results").append("<div class='category'><i class='cf-"+$(this).attr("data-category")+"'></i><p>"+list[Math.floor(Math.random()*list.length)]+"</p></div>");
+           var list = lists[$(this).attr("data-category")],
+               randomInt = Math.floor(Math.random()*list.length),
+               lastInt = storage.getItem($(this).attr("data-category"));
+           if(randomInt == lastInt)
+           {
+               if(randomInt != list.length-1)
+                   randomInt++;
+               else
+                   randomInt--;
+           }
+           console.log(randomInt, list.length);
+           $(".results").append("<div class='category'><i class='cf-"+$(this).attr("data-category")+"'></i><p>"+list[randomInt]+"</p></div>");
+           storage.setItem($(this).attr("data-category"), randomInt);
        });
         $.mobile.changePage( "#result", { transition: "slide", changeHash: true });
     });
