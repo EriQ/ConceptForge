@@ -45,7 +45,7 @@
   content: "\e002";
 }
 .cf-Insects:before {
-  content: "\e003";
+  content: "\e005";
 }
 .cf-Buildings:before {
   content: "\e004";
@@ -113,6 +113,9 @@
 .cf-Close:before {
   content: "\e018";
 }
-.cf-Refresh:before {
+.cf-Sports:before {
   content: "\e019";
+}
+.cf-Refresh:before {
+  content: "\e003";
 }

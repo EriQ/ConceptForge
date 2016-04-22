@@ -22,7 +22,7 @@ h3 {
     width: 90%;
     height: 286px;
     padding: 3% 0% 7% 0%;
-    border: 1.5px solid #e7b157;
+    border: 1.5px solid;
     margin: -6px auto 19px auto;
     overflow: auto;
     border-radius: 5px;
@@ -51,11 +51,11 @@ h3 {
     display: inline-block;
     width: 33%;
     vertical-align: top;
-    margin: 5px 0px 15px 0px;
+    margin: 3px 0px 5px 0px;
     font-size: 10pt;
     text-shadow: none;
     text-align: center;
-    text-transform:capitalize;
+    text-transform: capitalize;
 }
 .randomizer .category {
     margin: 0px;
@@ -75,7 +75,7 @@ h3 {
     font-size: 40pt;
     border-radius: 5px;
     color: #212732;
-    line-height: 40pt;
+    line-height: 50pt;
 }
 .results .category i {
     line-height: 47pt;
@@ -88,6 +88,7 @@ h3 {
     padding: 0px;
     width: 0px;
     height: 0px;
+    line-height: 40pt;
 }
 .category p {
     margin: 6px 0px;
@@ -135,7 +136,7 @@ button.ui-btn.ui-shadow.ui-corner-all:hover {
     color: #212732 !important;
     background: #A9BDC9;
 }
-.rerunLink:hover {
+.rerunLink.animating {
     -webkit-animation: spin .75s linear;
     animation: spin .75s linear;
 }
@@ -164,7 +165,7 @@ button.ui-btn.ui-shadow.ui-corner-all:hover {
     display: inline-block;
     vertical-align: middle;
     position: relative;
-    border: 1px solid #e7b157;
+    border: 1px solid;
     border-radius: 10px;
     overflow: hidden;
     background:#212732;
@@ -280,7 +281,7 @@ a.startTour:hover {
     position: relative;
 }
 .sliderBar .sliderBar {
-    background: #e7b157;
+    background: #A9BDC9;
     margin: 0px;
     position:absolute;
     left:0%;
